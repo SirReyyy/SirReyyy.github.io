@@ -1,172 +1,334 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <title>SirReyy</title>
+    <link rel="stylesheet" href="css/style.css" />
+    
 
-<html>
-	<head>
-		<title>Rey M. Oronos, Jr</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+</head>
+<body>
 
-		<!-- Page Wrapper -->
-			<div id="page-wrapper">
+    <header>
+        <div class="container header-content">
+            <div class="site-title">
+                <h1> <a href="index.html">Rey M. Oronos, Jr.</a> </h1>
+            </div>
+            <nav class="site-nav">
+                <ul>
+                    <li><a href="#intro">About</a></li>
+                    <li><a href="#portfolio">Projects</a></li>
+                    <li><a class="download-link" href="assets/ReyMOronosJr-CV_2025.pdf" download>Resume</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-				<!-- Header -->
-					<header id="header" class="alt">
-						<h1><a href="index.html">Rey M. Oronos, Jr.</a></h1>
-						<nav>
-							<a href="#menu">Menu</a>
-						</nav>
-					</header>
+    <section id="intro" class="intro">
+        <div class="container">
+            <h2>Hello, I'm <a class="download-link" href="assets/ReyMOronosJr-CV_2025.pdf" download>SirReyyy</a></h2>
+            <p>I'm a passionate game developer who enjoys creating engaging and innovative experiences both professionally and as a hobby. Over the years, I've worked with a variety of game engines including Unreal Engine for Fortnite (UEFN), Unity, Unreal Engine, and Godot. My journey in game development has taken me through solo projects, collaborations, and freelance work, allowing me to explore and experience developing different game genres.</p>
+        </div>          
+    </section>
+    
+    <section id="history-section" class="section">
+        <div class="container history-grid">
+          
+          <!-- Work Experience -->
+        <div class="history-column">
+            <h2>Work Experience</h2>
+            <div class="work-history">
+                <div class="work-item">UEFN Game Developer
+                    <p>Good Morning Games | January 2025 – March 2025</p>
+                </div>
+                <div class="work-item">Game Developer, Arduino Programmer, IT Specialist
+                    <p>LightUpToys | June 2023 – December 2024</p>
+                </div>
+                <div class="work-item">Game Developer
+                    <p>Polywick Graphics Ph. | March 2022 – September 2022</p>
+                </div>
+            </div>
+        </div>
+      
+          <!-- Education -->
+        <div class="history-column">
+            <h2>Education</h2>
+            <div class="work-history">
+                <div class="work-item">Masters of Science in Engineering – Computer Engineering
+                    <p>Polytechnic University of the Philippines – Graduate School</p>
+                    <p>November 2018 – Present</p>
+                </div>
+                <div class="work-item">Bachelors of Science in Computer Engineering
+                    <p>Polytechnic University of the Philippines</p>
+                    <p>June 2013 – May 2018</p>
+                </div>
+            </div>
+        </div>
+      
+        </div>
+    </section>      
 
-				<!-- Menu -->
-					<nav id="menu">
-						<div class="inner">
-							<h2>Menu</h2>
-							<ul class="links">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="#">Games</a></li>
-								<li><a href="#">Assets</a></li>
-								<li><a href="#">Others</a></li>
-							</ul>
-							<a href="#" class="close">Close</a>
-						</div>
-					</nav>
+    <section id="portfolio" class="section">
+        <div class="container">
+            <h2>Projects</h2>
 
-				<!-- Banner -->
-					<section id="banner">
-						<div class="inner">
-							<h2>Rey M. Oronos, Jr.</h2>
-							<p>-- portfolio under maintenance --</p>
-						</div>
-					</section>
+<!-- Unreal Engine for Fortnite -->
+                <div class="engine-title">
+                    <img src="img/logo/logo-uefn.png" alt="UEFN Logo" class="engine-logo">
+                    <h3>Unreal Engine for Fortnite</h3>
+                </div>
+                    <div class="gallery">
+                        <!-- <div class="card"> -->
+                        <div class="card" onclick="toggleDetails('uefn-wmtissue', this)">
+                            <img src="img/thumbnails/UEFN_WMTissue.png" alt="Where's My Tissue?">
+                            <div class="title-row">
+                                <h3>Where's My Tissue?</h3>
+                                <p class="map-code">9942-6114-0517</p>
+                            </div>
+                            <h5><span class="tag">Arcade |</span>
+                                <span class="tag">Casual |</span>
+                                <span class="tag">Objective |</span>
+                                <span class="tag">Teams</span>
+                            </h5>
+                        </div>                          
 
-				<!-- Wrapper -->
-					<section id="wrapper">
+                        <div class="card" onclick="toggleDetails('uefn-kots', this)">    
+                            <img src="img/thumbnails/UEFN_Kots.png" alt="King of the Swords">
+                            <div class="title-row">
+                                <h3>King of the Swords</h3>
+                                <p class="map-code">3202-1287-6622</p>
+                            </div>
+                            <h5><span class="tag">1v1 |</span>
+                                <span class="tag">Arena |</span>
+                                <span class="tag">Competitive |</span>
+                                <span class="tag">Melee</span>
+                            </h5>
+                        </div>
 
-						<!-- One -->
-							<section id="one" class="wrapper spotlight style1">
-								<div class="inner">
-									<a href="#" class="image"><img src="images/main/pic_01.png" alt="" /></a>
-									<div class="content">
-										<h2 class="major">Bounce and Pop</h2>
-										<p>Lorem ipsum dolor sit amet, etiam lorem adipiscing elit. Cras turpis ante, nullam sit amet turpis non, sollicitudin posuere urna. Mauris id tellus arcu. Nunc vehicula id nulla dignissim dapibus. Nullam ultrices, neque et faucibus viverra, ex nulla cursus.</p>
-										<a href="#" class="special">Learn more</a>
-									</div>
-								</div>
-							</section>
+                        <div class="card" onclick="toggleDetails('uefn-pachunt', this)">
+                            <img src="img/thumbnails/UEFN_PacHunt.png" alt="PacHunt">
+                            <div class="title-row">
+                                <h3>Pachunt</h3>
+                                <p class="map-code">7123-4441-8086</p>
+                            </div>
+                            <h5><span class="tag">Battle |</span>
+                                <span class="tag">Competitive |</span>
+                                <span class="tag">Free for All |</span>
+                                <span class="tag">Gunfight</span>
+                            </h5>
+                        </div>
+                    </div>
 
-						<!-- Two -->
-							<section id="two" class="wrapper alt spotlight style2">
-								<div class="inner">
-									<a href="#" class="image"><img src="images/main/pic_02.png" alt="" /></a>
-									<div class="content">
-										<h2 class="major">Jump Zone</h2>
-										<p>Lorem ipsum dolor sit amet, etiam lorem adipiscing elit. Cras turpis ante, nullam sit amet turpis non, sollicitudin posuere urna. Mauris id tellus arcu. Nunc vehicula id nulla dignissim dapibus. Nullam ultrices, neque et faucibus viverra, ex nulla cursus.</p>
-										<a href="#" class="special">Learn more</a>
-									</div>
-								</div>
-							</section>
+                <!-- hidden game details -->
+                <div id="game-details" class="game-details hidden">
+                    <div class="left">
+                        <img id="detail-thumbnail" class="thumbnail" src="" alt="Game Thumbnail">
+                        <div class="title-tags">
+                            <h3 id="detail-title"></h3>
+                            <p id="detail-tags"></p>
+                        </div>
+                    </div>
+                  
+                    <div class="right">
+                        <div class="description">
+                            <h3>Description</h3>
+                            <p id="detail-description"></p>
+                        </div>
+                        <div class="screenshots-and-link">
+                            <div class="screenshots" id="detail-gallery">
+                                <!-- screenshot thumbnails go here -->
+                            </div>
+                            <div class="external-link">
+                                <a href="#" id="detail-link" target="_blank" rel="noopener noreferrer">
+                                    🔗 Play Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>                 
+                <!-- hidden game details -->
 
-						<!-- Three -->
-							<section id="three" class="wrapper spotlight style3">
-								<div class="inner">
-									<a href="#" class="image"><img src="images/main/pic_03.png" alt="" /></a>
-									<div class="content">
-										<h2 class="major">Cuboid Fallout</h2>
-										<p>Lorem ipsum dolor sit amet, etiam lorem adipiscing elit. Cras turpis ante, nullam sit amet turpis non, sollicitudin posuere urna. Mauris id tellus arcu. Nunc vehicula id nulla dignissim dapibus. Nullam ultrices, neque et faucibus viverra, ex nulla cursus.</p>
-										<a href="https://drive.google.com/drive/folders/1w5xUGB7-W0Vbpts1BW1kH46bSvNBlOfL?usp=sharing" class="special">Learn more</a>
-									</div>
-								</div>
-							</section>
-						
-						<!-- Four -->
-							<section id="four" class="wrapper alt style1">
-								<div class="inner">
-									<h2 class="major">Assets and Voxels</h2>
-									<p>Cras mattis ante fermentum, malesuada neque vitae, eleifend erat. Phasellus non pulvinar erat. Fusce tincidunt, nisl eget mattis egestas, purus ipsum consequat orci, sit amet lobortis lorem lacus in tellus. Sed ac elementum arcu. Quisque placerat auctor laoreet.</p>
-									<section class="features">
-										<article>
-											<a href="#" class="image"><img src="images/main/pic_04.png" alt="" /></a>
-											<h3 class="major">Bichromal Monkeys</h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-											<a href="https://opensea.io/collection/bichromal-monkeys" class="special">Learn more</a>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/main/pic_07.png" alt="" /></a>
-											<h3 class="major">Voxelbots</h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-											<a href="https://drive.google.com/drive/folders/1h5KvekgrCDAJfKsZ1eL87oUnZjUyl8MU?usp=sharing" class="special">Learn more</a>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/main/pic_06.png" alt="" /></a>
-											<h3 class="major">Voxel Dinosaurs</h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-											<a href="https://drive.google.com/drive/folders/1y5cMvRLZH7zAOXrHor4qK1ge5zeo97p-?usp=sharing" class="special">Learn more</a>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/main/pic_05.png" alt="" /></a>
-											<h3 class="major">RPG Face Sprites</h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-											<a href="#" class="special">Learn more</a>
-										</article>
-									</section>
-									<ul class="actions">
-										<li><a href="https://drive.google.com/drive/folders/1crJNtiLsE3OHWLJ9T-54XijWSWmQhUTx?usp=sharing" class="button">Browse All</a></li>
-									</ul>
-								</div>
-							</section>
+                    <div class="gallery">
+                        <div class="card" onclick="toggleDetails('uefn-labescape', this)">
+                            <img src="img/thumbnails/UEFN_LabEscape.png" alt="Lab Escape">
+                            <div class="title-row">
+                                <h3>Lab Escape</h3>
+                                <p class="map-code">7623-7293-7581</p>
+                            </div>
+                            <h5><span class="tag">Casual |</span>
+                                <span class="tag">Just for Fun |</span>
+                                <span class="tag">Melee |</span>
+                                <span class="tag">Teams</span>
+                            </h5>
+                        </div>
 
-					</section>
+                        <div class="card" onclick="toggleDetails('uefn-boxfight', this)">
+                            <img src="img/thumbnails/UEFN_BoxFight.png" alt="Melee Boxfight">
+                            <div class="title-row">
+                                <h3>Melee Boxfight</h3>
+                                <p class="map-code">0630-7567-1391</p>
+                            </div>
+                            <h5><span class="tag">Arena |</span>
+                                <span class="tag">Boxfight |</span>
+                                <span class="tag">Free for All |</span>
+                                <span class="tag">Melee</span>
+                            </h5>
+                        </div>
 
-				<!-- Footer -->
-					<section id="footer">
-						<div class="inner">
-							<h2 class="major">Feel free to message</h2>
-							<p>Cras mattis ante fermentum, malesuada neque vitae, eleifend erat. Phasellus non pulvinar erat. Fusce tincidunt, nisl eget mattis egestas, purus ipsum consequat orci, sit amet lobortis lorem lacus in tellus. Sed ac elementum arcu. Quisque placerat auctor laoreet.</p>
-							<form method="post" action="#">
-								<div class="fields">
-									<div class="field">
-										<label for="name">Name</label>
-										<input type="text" name="name" id="name" />
-									</div>
-									<div class="field">
-										<label for="email">Email</label>
-										<input type="email" name="email" id="email" />
-									</div>
-									<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="4"></textarea>
-									</div>
-								</div>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</form>
-							<ul class="contact">
-								<li class="icon solid fa-home">
-									Southville 8C, San Isidro<br />
-									Rodriguez Rizal, Philippines 1860
-								</li>
-								<li class="icon solid fa-phone">+63 948 626 5511</li>
-								<li class="icon solid fa-envelope"><a href="https://drive.google.com/drive/folders/1crJNtiLsE3OHWLJ9T-54XijWSWmQhUTx?usp=sharing">rey.oronos.jr@gmail.com</a></li>
-								<li class="icon brands fa-github"><a href="https://github.com/SirReyyy">SirReyyy</a></li>
-								<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/reymoronosjr">reymoronosjr</a></li>
-							</ul>
-						</div>
-					</section>
+                        <div class="card" onclick="toggleDetails('uefn-upward', this)">
+                            <img src="img/thumbnails/UEFN_Upward.png" alt="Upward">
+                            <div class="title-row">
+                                <h3>Upward</h3>
+                                <p class="map-code">3511-2783-0218</p>
+                            </div>
+                            <h5><span class="tag">Arena |</span>
+                                <span class="tag">Building |</span>
+                                <span class="tag">Casual |</span>
+                                <span class="tag">Free for All</span>
+                            </h5>
+                        </div>
+                    </div>
+                <br><br>
 
-			</div>
+<!-- Unity -->
+                <div class="engine-title">
+                    <img src="img/logo/logo-unity.png" alt="Unity Logo" class="engine-logo">
+                    <h3>Unity</h3>
+                </div>
+                    <div class="gallery">
+                        <div class="card" onclick="toggleDetails('unity-hexaspin', this)">
+                            <img src="img/thumbnails/Unity-Hexaspin.png" alt="Hexaspin">
+                            <div class="title-row">
+                                <h3>Hexaspin</h3>
+                            </div>
+                            <h5><span class="tag">3D |</span>
+                                <span class="tag">Arcade |</span>
+                                <span class="tag">Casual |</span>
+                                <span class="tag">Web 3</span>
+                            </h5>
+                        </div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+                        <div class="card" onclick="toggleDetails('unity-scilab', this)">
+                            <img src="img/thumbnails/Unity-SciLab.png" alt="Upward">
+                            <div class="title-row">
+                                <h3>Science Laboratory</h3>
+                            </div>
+                            <h5><span class="tag">3D |</span>
+                                <span class="tag">Casual |</span>
+                                <span class="tag">First Person |</span>
+                                <span class="tag">Objective</span>
+                            </h5>
+                        </div>
 
-	</body>
+                        <div class="card" onclick="toggleDetails('unity-catsweeper', this)">
+                            <img src="img/thumbnails/Unity-Catsweeper.png" alt="Catsweeper">
+                            <div class="title-row">
+                                <h3>Catsweeper</h3>
+                            </div>
+                            <h5><span class="tag">2D |</span>
+                                <span class="tag">Casual |</span>
+                                <span class="tag">Puzzle |</span>
+                                <span class="tag">Objective</span>
+                            </h5>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery">
+                        <div class="card" onclick="toggleDetails('unity-cardofcats', this)">
+                            <img src="img/thumbnails/Unity-CardOfCats.png" alt="Card of Cats">
+                            <div class="title-row">
+                                <h3>Card of Cats</h3>
+                            </div>
+                            <h5><span class="tag">2D |</span>
+                                <span class="tag">Casual |</span>
+                                <span class="tag">Puzzle |</span>
+                                <span class="tag">Objective</span>
+                            </h5>
+                        </div>
+
+                        <div class="card" onclick="toggleDetails('unity-stackedup', this)">
+                            <img src="img/thumbnails/Unity-StackedUp.png" alt="Stacked Up">
+                            <div class="title-row">
+                                <h3>Stacked Up</h3>
+                            </div>
+                            <h5><span class="tag">3D |</span>
+                                <span class="tag">Arcade |</span>
+                                <span class="tag">Hypercasual |</span>
+                                <span class="tag">Puzzle</span>
+                            </h5>
+                        </div>
+
+                        <div class="card" onclick="toggleDetails('unity-cuboid', this)">
+                            <img src="img/thumbnails/Unity-Cuboid.png" alt="Cuboid Fallout">
+                            <div class="title-row">
+                                <h3>Cuboid Fallout</h3>
+                            </div>
+                            <h5><span class="tag">2D |</span>
+                                <span class="tag">Arcade |</span>
+                                <span class="tag">Casual |</span>
+                                <span class="tag">Puzzle</span>
+                            </h5>
+                        </div>
+                    </div>
+                <br><br>
+
+<!-- Unreal Engine -->
+                <div class="engine-title">
+                    <img src="img/logo/logo-ue.png" alt="UE Logo" class="engine-logo">
+                    <h3>Unreal Engine</h3>
+                </div>
+                    <div class="gallery">
+                        <div class="card" onclick="toggleDetails('ue-tpdemo', this)">
+                            <img src="img/thumbnails/thumbnail.png" alt="Third Person Demo">
+                            <div class="title-row">
+                                <h3>Third Person Demo</h3>
+                            </div>
+                            <h5><span class="tag">3D |</span>
+                                <span class="tag">Casual |</span>
+                                <span class="tag">First Person |</span>
+                                <span class="tag">Third Person</span>
+                            </h5>
+                        </div>
+
+                        <div class="empty"></div>
+                        <div class="empty"></div>
+                    </div>
+                <br><br>
+
+<!-- Godot -->
+                <!-- <div class="engine-title">
+                    <img src="img/logo/logo-godot.png" alt="Godot Logo" class="engine-logo">
+                    <h3>Godot</h3>
+                </div>
+                    <div class="gallery">
+                        <div class="empty"></div>
+                        <div class="empty"></div>
+                        <div class="empty"></div>
+                    </div>
+                <br><br> -->
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="left-links">
+                <a href="https://www.linkedin.com/in/reymoronosjr" target="_blank">
+                    <img src="img/logo/logo-linkedin.png" alt="LinkedIn" class="footer-icon">
+                </a>
+                <a href="https://github.com/SirReyyy" target="_blank">
+                    <img src="img/logo/logo-github.png" alt="GitHub" class="footer-icon">
+                </a>
+                <a href="https://sirreyyy.itch.io" target="_blank">
+                    <img src="img/logo/logo-itch.png" alt="Itch.io" class="footer-icon">
+                </a>
+            </div>
+            <div class="right-text">
+                <h3>&copy; 2025 Rey M. Oronos, jr.</h3>
+            </div>
+        </div>
+    </footer>
+      
+    <script src="js/script.js"></script>
+</body>
 </html>
