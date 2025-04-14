@@ -82,7 +82,7 @@ const gameData = {
       "img/screenshots/unity-hexaspin-2.png",
       "img/screenshots/unity-hexaspin-3.png"
     ],
-    link: "youtube.com"
+    link: "https://sirreyyy.github.io/"
   },
   "unity-scilab": {
     title: "Science Laboratory",
