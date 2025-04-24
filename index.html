@@ -5,8 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     
     <title>SirReyy</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style2.css" />
     
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+          const themes = ['theme-grayscale', 'theme-green', 'theme-sky', 'theme-orange', 'theme-grape'];
+          const randomTheme = themes[Math.floor(Math.random() * themes.length)];
+      
+          document.body.classList.add(randomTheme);
+        });
+      </script>
 
 </head>
 <body>
@@ -14,8 +22,17 @@
     <header>
         <div class="container header-content">
             <div class="site-title">
-                <h1> <a href="index.html">Rey M. Oronos, Jr.</a> </h1>
+                <div class="engine-title">
+                    <img src="img/logo/logo-sirreyyy.png" alt="SirReyyy Logo" class="engine-logo">
+                    <h1><a href="index.html">Rey M. Oronos, Jr.</a></h1>
+                </div>
             </div>
+            <!-- <div class="theme-toggle">
+                <button onclick="setTheme('choco')">Test</button>
+                <button onclick="setTheme('green')">Green</button>
+                <button onclick="setTheme('sky')">Sky</button>
+                <button onclick="setTheme('orange')">Orange</button>
+            </div> -->
             <nav class="site-nav">
                 <ul>
                     <li><a href="#intro">About</a></li>
@@ -25,6 +42,7 @@
             </nav>
         </div>
     </header>
+      
 
     <section id="intro" class="intro">
         <div class="container">
@@ -36,31 +54,36 @@
     <section id="history-section" class="section">
         <div class="container history-grid">
           
-          <!-- Work Experience -->
+        <!-- Work Experience -->
         <div class="history-column">
             <h2>Work Experience</h2>
             <div class="work-history">
-                <div class="work-item">UEFN Game Developer
+                <div class="work-item">
+                    <h4>UEFN Game Developer</h4>
                     <p>Good Morning Games | January 2025 – March 2025</p>
                 </div>
-                <div class="work-item">Game Developer, Arduino Programmer, IT Specialist
+                <div class="work-item">
+                    <h4>Game Developer, Arduino Programmer, IT Specialist</h4>
                     <p>LightUpToys | June 2023 – December 2024</p>
                 </div>
-                <div class="work-item">Game Developer
+                <div class="work-item">
+                    <h4>Game Developer</h4>
                     <p>Polywick Graphics Ph. | March 2022 – September 2022</p>
                 </div>
             </div>
         </div>
       
-          <!-- Education -->
+        <!-- Education -->
         <div class="history-column">
             <h2>Education</h2>
             <div class="work-history">
-                <div class="work-item">Masters of Science in Engineering – Computer Engineering
+                <div class="work-item">
+                    <h4>Masters of Science in Engineering – Computer Engineering</h4>
                     <p>Polytechnic University of the Philippines – Graduate School</p>
                     <p>November 2018 – Present</p>
                 </div>
-                <div class="work-item">Bachelors of Science in Computer Engineering
+                <div class="work-item">
+                    <h4>Bachelors of Science in Computer Engineering</h4>
                     <p>Polytechnic University of the Philippines</p>
                     <p>June 2013 – May 2018</p>
                 </div>
@@ -198,15 +221,15 @@
                     <h3>Unity</h3>
                 </div>
                     <div class="gallery">
-                        <div class="card" onclick="toggleDetails('unity-hexaspin', this)">
-                            <img src="img/thumbnails/Unity-Hexaspin.png" alt="Hexaspin">
+                        <div class="card" onclick="toggleDetails('unity-bounceandspin', this)">
+                            <img src="img/thumbnails/Unity-BounceAndSpin.png" alt="BounceAndSpin">
                             <div class="title-row">
-                                <h3>Hexaspin</h3>
+                                <h3>Bounce and Spin</h3>
                             </div>
                             <h5><span class="tag">3D |</span>
                                 <span class="tag">Arcade |</span>
                                 <span class="tag">Casual |</span>
-                                <span class="tag">Web 3</span>
+                                <span class="tag">Endless Runner</span>
                             </h5>
                         </div>
 
@@ -310,7 +333,7 @@
                 <br><br> -->
     </section>
 
-    <footer>
+    <footer class="footer">
         <div class="container footer-content">
             <div class="left-links">
                 <a href="https://www.linkedin.com/in/reymoronosjr" target="_blank">
@@ -324,7 +347,7 @@
                 </a>
             </div>
             <div class="right-text">
-                <h3>&copy; 2025 Rey M. Oronos, jr.</h3>
+                <h3>&copy; 2025 Project.Z</h3>
             </div>
         </div>
     </footer>

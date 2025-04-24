@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <title>SirReyy</title>
+    <link rel="stylesheet" href="css/style.css" />
+    
+
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="site-title">
+                <h1> <a href="index.html">Rey M. Oronos, Jr.</a> </h1>
+            </div>
+            <nav class="site-nav">
+                <ul>
+                    <li><a href="#intro">About</a></li>
+                    <li><a href="#portfolio">Projects</a></li>
+                    <li><a class="download-link" href="assets/ReyMOronosJr-CV_2025.pdf" download>Resume</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="intro" class="intro">
+        <div class="container">
+            <h2>Hello, I'm <a class="download-link" href="assets/ReyMOronosJr-CV_2025.pdf" download>SirReyyy</a></h2>
+            <p>I'm a passionate game developer who enjoys creating engaging and innovative experiences both professionally and as a hobby. Over the years, I've worked with a variety of game engines including Unreal Engine for Fortnite (UEFN), Unity, Unreal Engine, and Godot. My journey in game development has taken me through solo projects, collaborations, and freelance work, allowing me to explore and experience developing different game genres.</p>
+        </div>          
+    </section>
+    
+    <section id="history-section" class="section">
+        <div class="container history-grid">
+          
+          <!-- Work Experience -->
+        <div class="history-column">
+            <h2>Work Experience</h2>
+            <div class="work-history">
+                <div class="work-item">UEFN Game Developer
+                    <p>Good Morning Games | January 2025 – March 2025</p>
+                </div>
+                <div class="work-item">Game Developer, Arduino Programmer, IT Specialist
+                    <p>LightUpToys | June 2023 – December 2024</p>
+                </div>
+                <div class="work-item">Game Developer
+                    <p>Polywick Graphics Ph. | March 2022 – September 2022</p>
+                </div>
+            </div>
+        </div>
+      
+          <!-- Education -->
+        <div class="history-column">
+            <h2>Education</h2>
+            <div class="work-history">
+                <div class="work-item">Masters of Science in Engineering – Computer Engineering
+                    <p>Polytechnic University of the Philippines – Graduate School</p>
+                    <p>November 2018 – Present</p>
+                </div>
+                <div class="work-item">Bachelors of Science in Computer Engineering
+                    <p>Polytechnic University of the Philippines</p>
+                    <p>June 2013 – May 2018</p>
+                </div>
+            </div>
+        </div>
+      
+        </div>
+    </section>      
+
+    <section id="portfolio" class="section">
+        <div class="container">
+            <h2>Projects</h2>
+
+<!-- Unreal Engine for Fortnite -->
+                <div class="engine-title">
+                    <img src="img/logo/logo-uefn.png" alt="UEFN Logo" class="engine-logo">
+                    <h3>Unreal Engine for Fortnite</h3>
+                </div>
+                    <div class="gallery">
+                        <!-- <div class="card"> -->
+                        <div class="card" onclick="toggleDetails('uefn-wmtissue', this)">
+                            <img src="img/thumbnails/UEFN_WMTissue.png" alt="Where's My Tissue?">
+                            <div class="title-row">
+                                <h3>Where's My Tissue?</h3>
+                                <p class="map-code">9942-6114-0517</p>
+                            </div>
+                            <h5><span class="tag">Arcade |</span>
+                                <span class="tag">Casual |</span>
+                                <span class="tag">Objective |</span>
+                                <span class="tag">Teams</span>
+                            </h5>
+                        </div>                          
+
+                        <div class="card" onclick="toggleDetails('uefn-kots', this)">    
+                            <img src="img/thumbnails/UEFN_Kots.png" alt="King of the Swords">
+                            <div class="title-row">
+                                <h3>King of the Swords</h3>
+                                <p class="map-code">3202-1287-6622</p>
+                            </div>
+                            <h5><span class="tag">1v1 |</span>
+                                <span class="tag">Arena |</span>
+                                <span class="tag">Competitive |</span>
+                                <span class="tag">Melee</span>
+                            </h5>
+                        </div>
+
+                        <div class="card" onclick="toggleDetails('uefn-pachunt', this)">
+                            <img src="img/thumbnails/UEFN_PacHunt.png" alt="PacHunt">
+                            <div class="title-row">
+                                <h3>Pachunt</h3>
+                                <p class="map-code">7123-4441-8086</p>
+                            </div>
+                            <h5><span class="tag">Battle |</span>
+                                <span class="tag">Competitive |</span>
+                                <span class="tag">Free for All |</span>
+                                <span class="tag">Gunfight</span>
+                            </h5>
+                        </div>
+                    </div>
+
+                <!-- hidden game details -->
+                <div id="game-details" class="game-details hidden">
+                    <div class="left">
+                        <img id="detail-thumbnail" class="thumbnail" src="" alt="Game Thumbnail">
+                        <div class="title-tags">
+                            <h3 id="detail-title"></h3>
+                            <p id="detail-tags"></p>
+                        </div>
+                    </div>
+                  
+                    <div class="right">
+                        <div class="description">
+                            <h3>Description</h3>
+                            <p id="detail-description"></p>
+                        </div>
+                        <div class="screenshots-and-link">
+                            <div class="screenshots" id="detail-gallery">
+                                <!-- screenshot thumbnails go here -->
+                            </div>
+                            <div class="external-link">
+                                <a href="#" id="detail-link" target="_blank" rel="noopener noreferrer">
+                                    🔗 Play Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>                 
+                <!-- hidden game details -->
+
+                    <div class="gallery">
+                        <div class="card" onclick="toggleDetails('uefn-labescape', this)">
+                            <img src="img/thumbnails/UEFN_LabEscape.png" alt="Lab Escape">
+                            <div class="title-row">
+                                <h3>Lab Escape</h3>
+                                <p class="map-code">7623-7293-7581</p>
+                            </div>
+                            <h5><span class="tag">Casual |</span>
+                                <span class="tag">Just for Fun |</span>
+                                <span class="tag">Melee |</span>
+                                <span class="tag">Teams</span>
+                            </h5>
+                        </div>
+
+                        <div class="card" onclick="toggleDetails('uefn-boxfight', this)">
+                            <img src="img/thumbnails/UEFN_BoxFight.png" alt="Melee Boxfight">
+                            <div class="title-row">
+                                <h3>Melee Boxfight</h3>
+                                <p class="map-code">0630-7567-1391</p>
+                            </div>
+                            <h5><span class="tag">Arena |</span>
+                                <span class="tag">Boxfight |</span>
+                                <span class="tag">Free for All |</span>
+                                <span class="tag">Melee</span>
+                            </h5>
+                        </div>
+
+                        <div class="card" onclick="toggleDetails('uefn-upward', this)">
+                            <img src="img/thumbnails/UEFN_Upward.png" alt="Upward">
+                            <div class="title-row">
+                                <h3>Upward</h3>
+                                <p class="map-code">3511-2783-0218</p>
+                            </div>
+                            <h5><span class="tag">Arena |</span>
+                                <span class="tag">Building |</span>
+                                <span class="tag">Casual |</span>
+                                <span class="tag">Free for All</span>
+                            </h5>
+                        </div>
+                    </div>
+                <br><br>
+
+<!-- Unity -->
+                <div class="engine-title">
+                    <img src="img/logo/logo-unity.png" alt="Unity Logo" class="engine-logo">
+                    <h3>Unity</h3>
+                </div>
+                    <div class="gallery">
+                        <div class="card" onclick="toggleDetails('unity-hexaspin', this)">
+                            <img src="img/thumbnails/Unity-Hexaspin.png" alt="Hexaspin">
+                            <div class="title-row">
+                                <h3>Hexaspin</h3>
+                            </div>
+                            <h5><span class="tag">3D |</span>
+                                <span class="tag">Arcade |</span>
+                                <span class="tag">Casual |</span>
+                                <span class="tag">Web 3</span>
+                            </h5>
+                        </div>
+
+                        <div class="card" onclick="toggleDetails('unity-scilab', this)">
+                            <img src="img/thumbnails/Unity-SciLab.png" alt="Upward">
+                            <div class="title-row">
+                                <h3>Science Laboratory</h3>
+                            </div>
+                            <h5><span class="tag">3D |</span>
+                                <span class="tag">Casual |</span>
+                                <span class="tag">First Person |</span>
+                                <span class="tag">Objective</span>
+                            </h5>
+                        </div>
+
+                        <div class="card" onclick="toggleDetails('unity-catsweeper', this)">
+                            <img src="img/thumbnails/Unity-Catsweeper.png" alt="Catsweeper">
+                            <div class="title-row">
+                                <h3>Catsweeper</h3>
+                            </div>
+                            <h5><span class="tag">2D |</span>
+                                <span class="tag">Casual |</span>
+                                <span class="tag">Puzzle |</span>
+                                <span class="tag">Objective</span>
+                            </h5>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery">
+                        <div class="card" onclick="toggleDetails('unity-cardofcats', this)">
+                            <img src="img/thumbnails/Unity-CardOfCats.png" alt="Card of Cats">
+                            <div class="title-row">
+                                <h3>Card of Cats</h3>
+                            </div>
+                            <h5><span class="tag">2D |</span>
+                                <span class="tag">Casual |</span>
+                                <span class="tag">Puzzle |</span>
+                                <span class="tag">Objective</span>
+                            </h5>
+                        </div>
+
+                        <div class="card" onclick="toggleDetails('unity-stackedup', this)">
+                            <img src="img/thumbnails/Unity-StackedUp.png" alt="Stacked Up">
+                            <div class="title-row">
+                                <h3>Stacked Up</h3>
+                            </div>
+                            <h5><span class="tag">3D |</span>
+                                <span class="tag">Arcade |</span>
+                                <span class="tag">Hypercasual |</span>
+                                <span class="tag">Puzzle</span>
+                            </h5>
+                        </div>
+
+                        <div class="card" onclick="toggleDetails('unity-cuboid', this)">
+                            <img src="img/thumbnails/Unity-Cuboid.png" alt="Cuboid Fallout">
+                            <div class="title-row">
+                                <h3>Cuboid Fallout</h3>
+                            </div>
+                            <h5><span class="tag">2D |</span>
+                                <span class="tag">Arcade |</span>
+                                <span class="tag">Casual |</span>
+                                <span class="tag">Puzzle</span>
+                            </h5>
+                        </div>
+                    </div>
+                <br><br>
+
+<!-- Unreal Engine -->
+                <div class="engine-title">
+                    <img src="img/logo/logo-ue.png" alt="UE Logo" class="engine-logo">
+                    <h3>Unreal Engine</h3>
+                </div>
+                    <div class="gallery">
+                        <div class="card" onclick="toggleDetails('ue-tpdemo', this)">
+                            <img src="img/thumbnails/thumbnail.png" alt="Third Person Demo">
+                            <div class="title-row">
+                                <h3>Third Person Demo</h3>
+                            </div>
+                            <h5><span class="tag">3D |</span>
+                                <span class="tag">Casual |</span>
+                                <span class="tag">First Person |</span>
+                                <span class="tag">Third Person</span>
+                            </h5>
+                        </div>
+
+                        <div class="empty"></div>
+                        <div class="empty"></div>
+                    </div>
+                <br><br>
+
+<!-- Godot -->
+                <!-- <div class="engine-title">
+                    <img src="img/logo/logo-godot.png" alt="Godot Logo" class="engine-logo">
+                    <h3>Godot</h3>
+                </div>
+                    <div class="gallery">
+                        <div class="empty"></div>
+                        <div class="empty"></div>
+                        <div class="empty"></div>
+                    </div>
+                <br><br> -->
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="left-links">
+                <a href="https://www.linkedin.com/in/reymoronosjr" target="_blank">
+                    <img src="img/logo/logo-linkedin.png" alt="LinkedIn" class="footer-icon">
+                </a>
+                <a href="https://github.com/SirReyyy" target="_blank">
+                    <img src="img/logo/logo-github.png" alt="GitHub" class="footer-icon">
+                </a>
+                <a href="https://sirreyyy.itch.io" target="_blank">
+                    <img src="img/logo/logo-itch.png" alt="Itch.io" class="footer-icon">
+                </a>
+            </div>
+            <div class="right-text">
+                <h3>&copy; 2025 Rey M. Oronos, jr.</h3>
+            </div>
+        </div>
+    </footer>
+      
+    <script src="js/script.js"></script>
+</body>
+</html>

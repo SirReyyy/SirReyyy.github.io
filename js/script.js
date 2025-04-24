@@ -72,17 +72,17 @@ const gameData = {
     link: "https://www.fortnite.com/@sirreyyy/3511-2783-0218"
   },
 
-  "unity-hexaspin": {
-    title: "Hexaspin",
-    tags: "3D | Arcade | Casual | Web 3",
-    thumbnail: "img/thumbnails/Unity-Hexaspin.png",
-    description: "Hexaspin lets you control a constantly bouncing ball atop a rotating hexagonal platform field. Platforms move toward you while random tiles vanish—rotate the arena to line up the next safe landing. Miss, and it’s game over.",
+  "unity-bounceandspin": {
+    title: "Bounce and Spin",
+    tags: "3D | Arcade | Casual | Endless Runner",
+    thumbnail: "img/thumbnails/Unity-BounceAndSpin.png",
+    description: "Bounce and Spin lets you control a constantly bouncing ball atop a rotating hexagonal platform field. Platforms move toward you while random tiles vanish—rotate the arena to line up the next safe landing. Miss, and it’s game over.",
     screenshots: [
-      "img/screenshots/unity-hexaspin-1.png",
-      "img/screenshots/unity-hexaspin-2.png",
-      "img/screenshots/unity-hexaspin-3.png"
+      "img/screenshots/unity-bounceandspin-1.png",
+      "img/screenshots/unity-bounceandspin-2.png",
+      "img/screenshots/unity-bounceandspin-3.png"
     ],
-    link: "https://sirreyyy.github.io/"
+    link: "https://sirreyyy.itch.io/bounceandspin"
   },
   "unity-scilab": {
     title: "Science Laboratory",
@@ -198,4 +198,10 @@ function toggleDetails(gameId, cardElement) {
 
   // Optional smooth scroll
   detailSection.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+
+function setTheme(theme) {
+  document.body.className = '';
+  document.body.classList.add(`theme-${theme}`);
 }
