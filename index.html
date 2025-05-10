@@ -27,12 +27,7 @@
                     <h1><a href="index.html">Rey M. Oronos, Jr.</a></h1>
                 </div>
             </div>
-            <!-- <div class="theme-toggle">
-                <button onclick="setTheme('choco')">Test</button>
-                <button onclick="setTheme('green')">Green</button>
-                <button onclick="setTheme('sky')">Sky</button>
-                <button onclick="setTheme('orange')">Orange</button>
-            </div> -->
+            
             <nav class="site-nav">
                 <ul>
                     <li><a href="#intro">About</a></li>
@@ -104,8 +99,34 @@
                 </div>
                     <div class="gallery">
                         <!-- <div class="card"> -->
+                         <div class="card" onclick="toggleDetails('uefn-elevator', this)">
+                            <img src="img/thumbnails/UEFN-Elevator.png" alt="Elevator Tower Escape">
+                            <div class="title-row">
+                                <h3>Elevator Escape</h3>
+                                <p class="map-code">7919-4258-3271</p>
+                            </div>
+                            <h5><span class="tag">Arcade |</span>
+                                <span class="tag">Casual |</span>
+                                <span class="tag">Single Player |</span>
+                                <span class="tag">Shooter</span>
+                            </h5>
+                        </div>
+
+                        <div class="card" onclick="toggleDetails('uefn-deathmatch', this)">
+                            <img src="img/thumbnails/UEFN-Deathmatch.png" alt="Deathmatch Classic">
+                            <div class="title-row">
+                                <h3>Deathmatch Classic</h3>
+                                <p class="map-code">7984-3984-6041</p>
+                            </div>
+                            <h5><span class="tag">Arcade |</span>
+                                <span class="tag">Arena |</span>
+                                <span class="tag">Casual |</span>
+                                <span class="tag">Teams</span>
+                            </h5>
+                        </div>
+
                         <div class="card" onclick="toggleDetails('uefn-wmtissue', this)">
-                            <img src="img/thumbnails/UEFN_WMTissue.png" alt="Where's My Tissue?">
+                            <img src="img/thumbnails/UEFN-WMTissue.png" alt="Where's My Tissue?">
                             <div class="title-row">
                                 <h3>Where's My Tissue?</h3>
                                 <p class="map-code">9942-6114-0517</p>
@@ -114,32 +135,6 @@
                                 <span class="tag">Casual |</span>
                                 <span class="tag">Objective |</span>
                                 <span class="tag">Teams</span>
-                            </h5>
-                        </div>                          
-
-                        <div class="card" onclick="toggleDetails('uefn-kots', this)">    
-                            <img src="img/thumbnails/UEFN_Kots.png" alt="King of the Swords">
-                            <div class="title-row">
-                                <h3>King of the Swords</h3>
-                                <p class="map-code">3202-1287-6622</p>
-                            </div>
-                            <h5><span class="tag">1v1 |</span>
-                                <span class="tag">Arena |</span>
-                                <span class="tag">Competitive |</span>
-                                <span class="tag">Melee</span>
-                            </h5>
-                        </div>
-
-                        <div class="card" onclick="toggleDetails('uefn-pachunt', this)">
-                            <img src="img/thumbnails/UEFN_PacHunt.png" alt="PacHunt">
-                            <div class="title-row">
-                                <h3>Pachunt</h3>
-                                <p class="map-code">7123-4441-8086</p>
-                            </div>
-                            <h5><span class="tag">Battle |</span>
-                                <span class="tag">Competitive |</span>
-                                <span class="tag">Free for All |</span>
-                                <span class="tag">Gunfight</span>
                             </h5>
                         </div>
                     </div>
@@ -174,8 +169,34 @@
                 <!-- hidden game details -->
 
                     <div class="gallery">
+                        <div class="card" onclick="toggleDetails('uefn-kots', this)">    
+                            <img src="img/thumbnails/UEFN-Kots.png" alt="King of the Swords">
+                            <div class="title-row">
+                                <h3>King of the Swords</h3>
+                                <p class="map-code">3202-1287-6622</p>
+                            </div>
+                            <h5><span class="tag">1v1 |</span>
+                                <span class="tag">Arena |</span>
+                                <span class="tag">Competitive |</span>
+                                <span class="tag">Melee</span>
+                            </h5>
+                        </div>
+
+                        <div class="card" onclick="toggleDetails('uefn-pachunt', this)">
+                            <img src="img/thumbnails/UEFN-PacHunt.png" alt="PacHunt">
+                            <div class="title-row">
+                                <h3>Pachunt</h3>
+                                <p class="map-code">7123-4441-8086</p>
+                            </div>
+                            <h5><span class="tag">Battle |</span>
+                                <span class="tag">Competitive |</span>
+                                <span class="tag">Free for All |</span>
+                                <span class="tag">Gunfight</span>
+                            </h5>
+                        </div>
+
                         <div class="card" onclick="toggleDetails('uefn-labescape', this)">
-                            <img src="img/thumbnails/UEFN_LabEscape.png" alt="Lab Escape">
+                            <img src="img/thumbnails/UEFN-LabEscape.png" alt="Lab Escape">
                             <div class="title-row">
                                 <h3>Lab Escape</h3>
                                 <p class="map-code">7623-7293-7581</p>
@@ -186,9 +207,11 @@
                                 <span class="tag">Teams</span>
                             </h5>
                         </div>
+                    </div>
 
+                    <div class="gallery">
                         <div class="card" onclick="toggleDetails('uefn-boxfight', this)">
-                            <img src="img/thumbnails/UEFN_BoxFight.png" alt="Melee Boxfight">
+                            <img src="img/thumbnails/UEFN-BoxFight.png" alt="Melee Boxfight">
                             <div class="title-row">
                                 <h3>Melee Boxfight</h3>
                                 <p class="map-code">0630-7567-1391</p>
@@ -201,7 +224,7 @@
                         </div>
 
                         <div class="card" onclick="toggleDetails('uefn-upward', this)">
-                            <img src="img/thumbnails/UEFN_Upward.png" alt="Upward">
+                            <img src="img/thumbnails/UEFN-Upward.png" alt="Upward">
                             <div class="title-row">
                                 <h3>Upward</h3>
                                 <p class="map-code">3511-2783-0218</p>
@@ -212,6 +235,8 @@
                                 <span class="tag">Free for All</span>
                             </h5>
                         </div>
+
+                        <div class="empty"></div>
                     </div>
                 <br><br>
 
@@ -221,8 +246,20 @@
                     <h3>Unity</h3>
                 </div>
                     <div class="gallery">
+                        <div class="card" onclick="toggleDetails('unity-pocket', this)">
+                            <img src="img/thumbnails/Unity-Pocket.png" alt="Pocket Merge">
+                            <div class="title-row">
+                                <h3>Pocket Merge</h3>
+                            </div>
+                            <h5><span class="tag">2D |</span>
+                                <span class="tag">Arcade |</span>
+                                <span class="tag">Casual |</span>
+                                <span class="tag">Puzzle</span>
+                            </h5>
+                        </div>
+
                         <div class="card" onclick="toggleDetails('unity-bounceandspin', this)">
-                            <img src="img/thumbnails/Unity-BounceAndSpin.png" alt="BounceAndSpin">
+                            <img src="img/thumbnails/Unity-BounceAndSpin.png" alt="Bounce And Spin">
                             <div class="title-row">
                                 <h3>Bounce and Spin</h3>
                             </div>
@@ -244,7 +281,9 @@
                                 <span class="tag">Objective</span>
                             </h5>
                         </div>
-
+                    </div>
+                    
+                    <div class="gallery">
                         <div class="card" onclick="toggleDetails('unity-catsweeper', this)">
                             <img src="img/thumbnails/Unity-Catsweeper.png" alt="Catsweeper">
                             <div class="title-row">
@@ -256,9 +295,7 @@
                                 <span class="tag">Objective</span>
                             </h5>
                         </div>
-                    </div>
-                    
-                    <div class="gallery">
+
                         <div class="card" onclick="toggleDetails('unity-cardofcats', this)">
                             <img src="img/thumbnails/Unity-CardOfCats.png" alt="Card of Cats">
                             <div class="title-row">
@@ -282,7 +319,9 @@
                                 <span class="tag">Puzzle</span>
                             </h5>
                         </div>
+                    </div>
 
+                    <div class="gallery">
                         <div class="card" onclick="toggleDetails('unity-cuboid', this)">
                             <img src="img/thumbnails/Unity-Cuboid.png" alt="Cuboid Fallout">
                             <div class="title-row">
@@ -294,6 +333,9 @@
                                 <span class="tag">Puzzle</span>
                             </h5>
                         </div>
+
+                        <div class="empty"></div>
+                        <div class="empty"></div>
                     </div>
                 <br><br>
 

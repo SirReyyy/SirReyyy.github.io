@@ -1,8 +1,32 @@
 const gameData = {
+  "uefn-elevator": {
+    title: "1 vs 100: Elevator Tower Escape",
+    tags: "Arcade | Casual | Single Player | Shooter",
+    thumbnail: "img/thumbnails/UEFN-Elevator.png",
+    description: "Elevator Tower Escape lets you race against time in this arcade-inspired shooter! Armed with your trusty Mammoth Pistol and unlimited ammo, search for keycards hidden throughout a guard-infested tower. Outmaneuver 100 enemies, collect the keys, and escape before the timer hits zero.",
+    screenshots: [
+      "img/screenshots/uefn-elevator-1.png",
+      "img/screenshots/uefn-elevator-2.png",
+      "img/screenshots/uefn-elevator-3.png"
+    ],
+    link: "https://www.fortnite.com/@sirreyyy/7919-4258-3271"
+  },
+  "uefn-deathmatch": {
+    title: "Deathmatch Classic",
+    tags: "Arcade | Arena | Casual | Teams",
+    thumbnail: "img/thumbnails/UEFN-Deathmatch.png",
+    description: "Deathmatch Classic is a fast-paced, team-based shooter inspired by a classic cs map. With unlimited ammo, quick loadouts, and no room for hesitation, it’s chaos at its finest—perfect for settling old scores in a hail of bullets.",
+    screenshots: [
+      "img/screenshots/uefn-deathmatch-1.png",
+      "img/screenshots/uefn-deathmatch-2.png",
+      "img/screenshots/uefn-deathmatch-3.png"
+    ],
+    link: "https://www.fortnite.com/@sirreyyy/7984-3984-6041"
+  },
   "uefn-wmtissue": {
     title: "Where's My Tissue?",
     tags: "Arcade | Casual | Objective | Teams",
-    thumbnail: "img/thumbnails/UEFN_WMTissue.png",
+    thumbnail: "img/thumbnails/UEFN-WMTissue.png",
     description: "Where’s My Tissue is a chaotic, arcade-inspired multiplayer game where players switch between two roles: Roll Raiders, who race around collecting tissue rolls, and Wipe Warriors, who hunt them down with scythes. Navigate an upgraded map, outsmart your opponents, and switch sides after each round to keep the action fresh.",
     screenshots: [
       "img/screenshots/uefn-wmtissue-1.png",
@@ -14,7 +38,7 @@ const gameData = {
   "uefn-kots": {
     title: "King of the Swords",
     tags: "1v1 | Arena | Competitive | Melee",
-    thumbnail: "img/thumbnails/UEFN_Kots.png",
+    thumbnail: "img/thumbnails/UEFN-Kots.png",
     description: "King of the Sword is the ultimate sword-fighting tournament, where players battle through intense 1v1 duels in a high-stakes, bracket-style format. No guns—just blades, reflexes, and pure skill. Start as a novice, climb your way through the ranks, and claim the throne as the Grand Champion. Only one can wear the crown.",
     screenshots: [
       "img/screenshots/uefn-kots-1.png",
@@ -26,7 +50,7 @@ const gameData = {
   "uefn-pachunt": {
     title: "PacHunt",
     tags: "Battle | Competitive | Free for All | Gunfight",
-    thumbnail: "img/thumbnails/UEFN_PacHunt.png",
+    thumbnail: "img/thumbnails/UEFN-PacHunt.png",
     description: "Pachunt drops you into a wild Free-For-All arena with no building, just pure survival instinct. Navigate a massive maze, adapt to random weapons on each respawn, and fight to control unlocking weapon caches. It’s fast, it’s unpredictable, and it’s every player for themselves. Be the PAC — hunt or be hunted.",
     screenshots: [
       "img/screenshots/uefn-pachunt-1.png",
@@ -38,7 +62,7 @@ const gameData = {
   "uefn-labescape": {
     title: "Lab Escape",
     tags: "Casual | Just for Fun | Melee | Teams",
-    thumbnail: "img/thumbnails/UEFN_LabEscape.png",
+    thumbnail: "img/thumbnails/UEFN-LabEscape.png",
     description: "Lab Escape is a high-stakes team challenge set inside a mysterious Laboratory Arena. Work together to call in supply drops, unlock gates, and retrieve the keycard—but beware: you’ll need to decide whether to fight or flee. Will your team escape... or be eliminated trying?",
     screenshots: [
       "img/screenshots/uefn-labescape-1.png",
@@ -50,7 +74,7 @@ const gameData = {
   "uefn-boxfight": {
     title: "Melee Boxfight",
     tags: "Arena | Boxfight | Free for All | Melee",
-    thumbnail: "img/thumbnails/UEFN_BoxFight.png",
+    thumbnail: "img/thumbnails/UEFN-BoxFight.png",
     description: "Melee Weapons Only Boxfight Arena drops players into a classic box fight arena—but with a twist: it’s melee weapons only. Battle in a fast-paced free-for-all, dodge the incoming storm, and fight to be the last one standing. No guns, just grit.",
     screenshots: [
       "img/screenshots/uefn-boxfight-1.png",
@@ -62,7 +86,7 @@ const gameData = {
   "uefn-upward": {
     title: "Upward",
     tags: "Arena | Building | Casual | Free for All",
-    thumbnail: "img/thumbnails/UEFN_Upward.png",
+    thumbnail: "img/thumbnails/UEFN-Upward.png",
     description: "Upward is a fast-paced competitive experience where players face off in 5 unique rounds, each testing different skills. Hone your mechanics in the Building Practice Arena, race upward in a vertical build challenge, survive the deadly rising lava, and unleash chaos in the elimination rounds. Every match is a new chance to dominate the arena!",
     screenshots: [
       "img/screenshots/uefn-upward-1.png",
@@ -72,6 +96,18 @@ const gameData = {
     link: "https://www.fortnite.com/@sirreyyy/3511-2783-0218"
   },
 
+  "unity-pocket": {
+    title: "Pocket Merge",
+    tags: "2D | Arcade | Casual | Puzzle",
+    thumbnail: "img/thumbnails/Unity-Pocket.png",
+    description: "Pokcet Merge is physics-based merging game inspired by the popular Suika Game — but with a twist! Drop and combine billiard balls to climb the numbers, rack up points, and keep the table from overflowing.",
+    screenshots: [
+      "img/screenshots/unity-pocket-1.png",
+      "img/screenshots/unity-pocket-2.png",
+      "img/screenshots/unity-pocket-3.png"
+    ],
+    link: "https://sirreyyy.itch.io/pocket-merge"
+  },
   "unity-bounceandspin": {
     title: "Bounce and Spin",
     tags: "3D | Arcade | Casual | Endless Runner",
@@ -133,7 +169,7 @@ const gameData = {
     link: "https://sirreyyy.itch.io/stackedup"
   },
   "unity-cuboid": {
-    title: "Stacked Up",
+    title: "Cuboid Fallout",
     tags: "2D | Arcade | Casual | Side Scroller",
     thumbnail: "img/thumbnails/Unity-Cuboid.png",
     description: "Cuboid Fallout is a fast-paced arcade game where players control a cube that must navigate through a series of obstacles and challenges. The goal is to survive as long as possible while collecting coins and avoiding hazards. With simple controls and addictive gameplay, Cuboid Fallout offers a fun and engaging experience for players of all ages.",
