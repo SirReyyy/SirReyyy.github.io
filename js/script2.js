@@ -1,6 +1,6 @@
-const gameData = {
+const uefnGameData = {
   "uefn-elevator": {
-    title: "1 vs 100: Elevator Tower Escape",
+    title: "Elevator Tower Escape",
     tags: "Arcade | Casual | Single Player | Shooter",
     thumbnail: "img/thumbnails/UEFN-Elevator.png",
     description: "Elevator Tower Escape lets you race against time in this arcade-inspired shooter! Armed with your trusty Mammoth Pistol and unlimited ammo, search for keycards hidden throughout a guard-infested tower. Outmaneuver 100 enemies, collect the keys, and escape before the timer hits zero.",
@@ -94,8 +94,10 @@ const gameData = {
       "img/screenshots/uefn-upward-3.png"
     ],
     link: "https://www.fortnite.com/@sirreyyy/3511-2783-0218"
-  },
+  }
+};
 
+const unityGameData = {
   "unity-pocket": {
     title: "Pocket Merge",
     tags: "2D | Arcade | Casual | Puzzle",
@@ -179,8 +181,10 @@ const gameData = {
       "img/screenshots/unity-cuboid-3.png"
     ],
     link: "https://sirreyyy.itch.io/cuboidfallout"
-  },
+  }
+};
 
+const unrealGameData = {
   "ue-tpdemo": {
     title: "Third Person Demo",
     tags: "3D | Casual | First Person | Third Person",
@@ -196,53 +200,166 @@ const gameData = {
 };
 
 
-let currentOpenId = null;
+// UEFN GAMES
 
-function toggleDetails(gameId, cardElement) {
-  const detailSection = document.getElementById("game-details");
+function createUEFNGameCards() {
+  const gallery = document.getElementById("uefnGameGallery");
+  for (const key in uefnGameData) {
+    const game = uefnGameData[key];
 
-  // Hide if already open on same game
-  if (currentOpenId === gameId) {
-    detailSection.classList.add("hidden");
-    currentOpenId = null;
-    return;
-  }
+    // Create card container
+    const card = document.createElement("div");
+    card.className = "card";
 
-  // Update content
-  const details = gameData[gameId];
-  document.getElementById("detail-title").textContent = details.title;
-  document.getElementById("detail-tags").textContent = details.tags;
-  document.getElementById("detail-description").textContent = details.description;
-  document.getElementById("detail-thumbnail").src = details.thumbnail;
-  document.getElementById("detail-link").href = details.link;
-  
-
-  const gallery = document.getElementById("detail-gallery");
-  gallery.innerHTML = "";
-  details.screenshots.forEach(src => {
+    // Game thumbnail
     const img = document.createElement("img");
-    img.src = src;
-    gallery.appendChild(img);
-  });
+    img.src = game.thumbnail;
+    img.alt = game.title;
+    card.appendChild(img);
 
-  detailSection.classList.remove("hidden");
-  currentOpenId = gameId;
+    // Info icon
+    const infoIcon = document.createElement("div");
+    infoIcon.className = "info-icon";
+    infoIcon.textContent = "i";
+    card.appendChild(infoIcon);
 
-  // === INSERT DETAILS SECTION BELOW THE CURRENT GALLERY ROW ===
-  const galleryContainer = cardElement.closest(".gallery");
-  galleryContainer.insertAdjacentElement("afterend", detailSection);
+    // Details popup
+    const details = document.createElement("div");
+    details.className = "card-details";
+    details.innerHTML = `
+      <h3>${game.title}</h3>
+      <h5>${game.tags}</h5><br>
+      <p>${game.description}</p>
+      <a href="${game.link}" target="_blank" class="play-btn">Play</a>
+    `;
+    card.appendChild(details);
 
-  // Optional smooth scroll
-  detailSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Bottom row: title + map code (if any)
+    const titleRow = document.createElement("div");
+    titleRow.className = "title-row";
+    titleRow.innerHTML = `
+      <h3>${game.title.split(":")[0]}</h3>
+      <p class="map-code">${extractMapCode(game.link)}</p>
+    `;
+    card.appendChild(titleRow);
+
+    gallery.appendChild(card);
+  }
+}
+
+function extractMapCode(link) {
+  // Example: return last segment if it's a valid code
+  const parts = link.split("/");
+  return parts.pop();
 }
 
 
-function setTheme(theme) {
-  document.body.className = '';
-  document.body.classList.add(`theme-${theme}`);
+// UNITY GAMES
+
+function createUnityGameCards() {
+  const gallery = document.getElementById("unityGameGallery");
+  for (const key in unityGameData) {
+    const game = unityGameData[key];
+
+    // Create card container
+    const card = document.createElement("div");
+    card.className = "card";
+
+    // Game thumbnail
+    const img = document.createElement("img");
+    img.src = game.thumbnail;
+    img.alt = game.title;
+    card.appendChild(img);
+
+    // Info icon
+    const infoIcon = document.createElement("div");
+    infoIcon.className = "info-icon";
+    infoIcon.textContent = "i";
+    card.appendChild(infoIcon);
+
+    // Details popup
+    const details = document.createElement("div");
+    details.className = "card-details";
+    details.innerHTML = `
+      <h3>${game.title}</h3>
+      <h5>${game.tags}</h5><br>
+      <p>${game.description}</p>
+      <a href="${game.link}" target="_blank" class="play-btn">Play</a>
+    `;
+    card.appendChild(details);
+
+    // Bottom row: title + map code (if any)
+    const titleRow = document.createElement("div");
+    titleRow.className = "title-row";
+    titleRow.innerHTML = `
+      <h3>${game.title.split(":")[0]}</h3>
+    `;
+    card.appendChild(titleRow);
+
+    gallery.appendChild(card);
+  }
 }
+
+
+// UNREAL GAMES
+
+function createUnrealGameCards() {
+  const gallery = document.getElementById("unrealGameGallery");
+  for (const key in unrealGameData) {
+    const game = unrealGameData[key];
+
+    // Create card container
+    const card = document.createElement("div");
+    card.className = "card";
+
+    // Game thumbnail
+    const img = document.createElement("img");
+    img.src = game.thumbnail;
+    img.alt = game.title;
+    card.appendChild(img);
+
+    // Info icon
+    const infoIcon = document.createElement("div");
+    infoIcon.className = "info-icon";
+    infoIcon.textContent = "i";
+    card.appendChild(infoIcon);
+
+    // Details popup
+    const details = document.createElement("div");
+    details.className = "card-details";
+    details.innerHTML = `
+      <h3>${game.title}</h3>
+      <h5>${game.tags}</h5><br>
+      <p>${game.description}</p>
+      <a href="${game.link}" target="_blank" class="play-btn">Play</a>
+    `;
+    card.appendChild(details);
+
+    // Bottom row: title + map code (if any)
+    const titleRow = document.createElement("div");
+    titleRow.className = "title-row";
+    titleRow.innerHTML = `
+      <h3>${game.title.split(":")[0]}</h3>
+    `;
+    card.appendChild(titleRow);
+
+    gallery.appendChild(card);
+  }
+}
+
+
+document.addEventListener("DOMContentLoaded", createUEFNGameCards);
+document.addEventListener("DOMContentLoaded", createUnityGameCards);
+document.addEventListener("DOMContentLoaded", createUnrealGameCards);
+
+
 
 
 function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function setTheme(theme) {
+  document.body.className = '';
+  document.body.classList.add(`theme-${theme}`);
 }

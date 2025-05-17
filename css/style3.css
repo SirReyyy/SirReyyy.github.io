@@ -1,0 +1,405 @@
+/* === Base Theme === */
+body.theme-grayscale {
+    font-family: Arial, sans-serif;
+  --text-primary: #e0e0e0;
+  --text-heading: #b0b0b0;
+  --border-color: #b0b0b0;
+  --background-color: #1a1a1a;
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  /* --logo-filter: invert(98%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%); */
+}
+
+body.theme-sky {
+    font-family: Arial, sans-serif;
+    --background-color: #0a1e26;       /* deep teal-blue */
+    --text-primary: #00b5e2;
+    --text-heading: #009cc2;
+    --border-color: #009cc2;
+    background-color: var(--background-color);
+    color: var(--text-primary);
+    --logo-filter: invert(48%) sepia(90%) saturate(900%) hue-rotate(168deg) brightness(105%) contrast(110%);
+}
+
+
+body.theme-green {
+    font-family: Arial, sans-serif;
+    --text-primary: #9bbc0f;
+    --text-heading: #8bac0f;
+    --border-color: #8bac0f;
+    --background-color: #0f380f;
+    background-color: var(--background-color);
+    color: var(--text-primary);
+    --logo-filter: invert(65%) sepia(96%) saturate(612%) hue-rotate(35deg) brightness(100%) contrast(92%);
+}
+
+body.theme-orange {
+    font-family: Arial, sans-serif;
+    --text-primary: #ff9900;
+    --text-heading: #cc7a00;
+    --border-color: #cc7a00;
+    --background-color: #331a00;
+    background-color: var(--background-color);
+    color: var(--text-primary);
+    --logo-filter: invert(64%) sepia(91%) saturate(635%) hue-rotate(1deg) brightness(101%) contrast(107%);
+  }
+
+  body.theme-grape {
+    font-family: Arial, sans-serif;
+    --background-color: #1a0f1f;
+    --text-primary: #b34dc9;
+    --text-heading: #9440a3;
+    --border-color: #9440a3;
+    background-color: var(--background-color);
+    color: var(--text-primary);
+    --logo-filter: invert(44%) sepia(96%) saturate(657%) hue-rotate(265deg) brightness(95%) contrast(90%);
+  }
+
+/* === Reset & Base Styles === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* === Containers === */
+.container,
+#portfolio .container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+}
+
+#portfolio .container {
+  padding: 40px 20px;
+}
+
+/* === Section Headers === */
+.engine-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.engine-title h3 {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  padding: 30px 0;
+}
+
+.engine-logo {
+  height: 30px;
+  width: auto;
+  object-fit: contain;
+}
+
+.engine-logo, .footer-icon {
+    filter: var(--logo-filter);
+    transition: filter 0.3s ease;
+}
+
+/* === Gallery Grid === */
+#uefnGameGallery,
+#unityGameGallery,
+#unrealGameGallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+/* === Game Card === */
+.card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: var(--background-color);
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Card Title */
+.card .title-row {
+  position: absolute;
+  bottom: 8px;
+  left: 12px;
+  right: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 8px;
+  background: none;
+}
+
+.card .title-row h3 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-shadow: 0 0 5px var(--background-color);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Info Icon */
+.card .info-icon {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: var(--text-primary);
+  text-align: center;
+  line-height: 24px;
+  font-size: 14px;
+  font-weight: bold;
+  pointer-events: auto;
+}
+
+/* === Card Hover Details === */
+.card .card-details {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: var(--text-primary);
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 10;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.card:hover .card-details {
+  opacity: 1;
+  visibility: visible;
+}
+
+.card-details .header-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.card-details .header-line .title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.card-details .header-line .id {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--text-primary);
+}
+/* 
+.card-details .tags {
+  font-size: 0.85rem;
+  color: var(--text-heading);
+  margin-bottom: 12px;
+} */
+
+.card-details .description {
+  font-size: 1rem;
+  text-align: justify;
+  line-height: 1.5;
+  color: var(--text-primary);
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+
+/* Play Button */
+.card-details .play-btn {
+  align-self: flex-end;
+  background-color: var(--text-primary);
+  color: var(--background-color);
+  padding: 8px 40px;
+  border-radius: 4px;
+  font-weight: bold;
+  white-space: nowrap;
+  margin-top: auto;
+}
+
+/* === Intro Section === */
+.intro {
+  padding: 3rem 0;
+}
+
+.intro h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.intro p {
+  text-indent: 2rem;
+  text-align: justify;
+  margin-bottom: -7rem;
+}
+
+/* === Generic Section === */
+.section {
+  padding: 4rem 0;
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* === Header & Nav === */
+header {
+  padding: 1rem 0;
+  border-bottom: 5px solid var(--text-primary)
+}
+
+.header-content,
+.site-title,
+nav ul,
+.site-nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.site-title h1,
+header h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+nav ul,
+.site-nav ul {
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.site-nav a {
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.site-nav a:hover {
+  color: var(--text-heading)
+}
+
+/* === Footer === */
+footer {
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  text-align: center;
+  border-top: 1px solid var(--text-primary);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.left-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.left-links a {
+  font-weight: bold;
+}
+
+.footer-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 30px;
+  transition: 0.2s ease;
+}
+
+.footer-icon:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
+/* === Resume Page === */
+.history-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: -9rem;
+}
+
+.history-column {
+  flex: 1 1 45%;
+}
+
+.work-history {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.work-item {
+  padding: 1rem;
+  width: 100%;
+  font-weight: bold;
+  color: var(--text-primary);
+  background-color: transparent;
+  position: relative;
+}
+
+.work-item p {
+  font-weight: normal;
+}
+
+.history-column .work-item:nth-child(-n + 3) {
+  margin-left: 1rem;
+}
+
+/* === Scroll-to-Top Button === */
+.scroll-top {
+  display: block;
+  margin: 2rem auto 1rem auto;
+  padding: 0.8rem 1rem;
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.scroll-top:hover {
+  background-color: var(--border-color);
+  color: var(--background-color);
+}
