@@ -199,13 +199,14 @@ const unrealGameData = {
   }
 };
 
-// === HELPERS ===
+
+// Helper
 function extractMapCode(link) {
   const parts = link.split("/");
   return parts.pop();
 }
 
-// === CARD CREATION ===
+// Card creation
 function createCard(game, showMapCode = false) {
   const card = document.createElement("div");
   card.className = "card";
@@ -225,12 +226,12 @@ function createCard(game, showMapCode = false) {
   const details = document.createElement("div");
   details.className = "card-details";
   details.innerHTML = `
-  <div class="details-header">
-    <h3 class="game-title">${game.title}</h3>
-    <h5 class="game-tags">${game.tags}</h5>
-  </div><br>
-  <p class="description">${game.description}</p>
-`;
+    <div class="details-header">
+      <h3 class="game-title">${game.title}</h3>
+      <h5 class="game-tags">${game.tags}</h5>
+    </div><br>
+    <p class="description">${game.description}</p>
+  `;
 
   // Action row: play button + screenshot strip
   const actionRow = document.createElement("div");
@@ -249,8 +250,6 @@ function createCard(game, showMapCode = false) {
     actionRow.appendChild(strip);
   }
 
-  details.appendChild(actionRow);
-
   // Play button
   const playBtn = document.createElement("a");
   playBtn.href = game.link;
@@ -259,7 +258,7 @@ function createCard(game, showMapCode = false) {
   playBtn.textContent = "Play";
   actionRow.appendChild(playBtn);
 
-  // Add details to card
+  details.appendChild(actionRow);
   card.appendChild(details);
 
   // Title row (with optional map code)
@@ -274,52 +273,21 @@ function createCard(game, showMapCode = false) {
   return card;
 }
 
-// === CARD GALLERY BUILDERS ===
-function createUEFNGameCards() {
-  const gallery = document.getElementById("uefnGameGallery");
-  for (const key in uefnGameData) {
-    const card = createCard(uefnGameData[key], true);
-    gallery.appendChild(card);
-  }
-  // setupBackgroundHover(gallery);
+// Gallery builder (example for Unreal)
+function buildGallery(galleryId, gameData) {
+  const gallery = document.getElementById(galleryId);
+  if (!gallery) return;
+  Object.values(gameData).forEach(game => {
+    gallery.appendChild(createCard(game));
+  });
 }
 
-function createUnityGameCards() {
-  const gallery = document.getElementById("unityGameGallery");
-  for (const key in unityGameData) {
-    const card = createCard(unityGameData[key]);
-    gallery.appendChild(card);
-  }
-  // setupBackgroundHover(gallery);
-}
+// Build all galleries (add your own data sources as needed)
+buildGallery("uefnGameGallery", uefnGameData);
+buildGallery("unityGameGallery", unityGameData);
+buildGallery("unrealGameGallery", unrealGameData);
 
-function createUnrealGameCards() {
-  const gallery = document.getElementById("unrealGameGallery");
-  for (const key in unrealGameData) {
-    const card = createCard(unrealGameData[key]);
-    gallery.appendChild(card);
-  }
-  // setupBackgroundHover(gallery);
-}
-
-// === SCROLL TO TOP ===
-function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-// === THEME SWITCHING ===
-function setTheme(theme) {
-  document.body.className = '';
-  document.body.classList.add(`theme-${theme}`);
-}
-
-
-// === INIT ===
-document.addEventListener("DOMContentLoaded", createUEFNGameCards);
-document.addEventListener("DOMContentLoaded", createUnityGameCards);
-document.addEventListener("DOMContentLoaded", createUnrealGameCards);
-
-
+// Screenshot zoom effect (hover to duplicate and center)
 document.addEventListener('mouseover', function(e) {
   if (e.target.matches('.screenshot-strip img')) {
     const cardDetails = e.target.closest('.card-details');
@@ -333,16 +301,30 @@ document.addEventListener('mouseover', function(e) {
   }
 });
 
-document.addEventListener('mouseout', function(e) {
-  // Remove zoomed image when mouse leaves the image or card-details
-  if (
-    e.target.matches('.screenshot-strip img') ||
-    (e.target.classList && e.target.classList.contains('card-details'))
-  ) {
-    const cardDetails = e.target.closest('.card-details') || e.target;
-    if (cardDetails) {
-      const zoomed = cardDetails.querySelector('.zoomed-center');
-      if (zoomed) zoomed.remove();
-    }
+// Remove zoomed image only when mouse leaves the entire card-details
+document.addEventListener('mouseleave', function(e) {
+  if (e.target.classList && e.target.classList.contains('card-details')) {
+    const zoomed = e.target.querySelector('.zoomed-center');
+    if (zoomed) zoomed.remove();
   }
+}, true);
+
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function openContactForm() {
+  document.getElementById('contactModal').classList.add('active');
+}
+
+function closeContactForm() {
+  // Clear form fields
+  document.getElementById('popupContactForm').reset();
+  document.getElementById('contactModal').classList.remove('active');
+}
+
+// Optional: Close modal on ESC key
+document.addEventListener('keydown', function(e) {
+  if (e.key === "Escape") closeContactForm();
 });

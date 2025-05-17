@@ -7,27 +7,14 @@
     <link rel="stylesheet" href="css/style3.css" />
     <script>
         window.addEventListener('DOMContentLoaded', () => {
-            const themes = ['theme-grayscale', 'theme-green', 'theme-sky', 'theme-orange', 'theme-grape'];
+            // const themes = ['theme-labo'];
+            const themes = ['theme-nsw','theme-gb','theme-gbc'];
             const randomTheme = themes[Math.floor(Math.random() * themes.length)];
             document.body.classList.add(randomTheme);
         });
     </script>
 </head>
 <body>
-    <!-- Dynamic Background -->
-    <div id="dynamic-bg">
-        <div class="bg-left">
-            <div data-pos="lt"><img /></div>
-            <div data-pos="lm"><img /></div>
-            <div data-pos="lb"><img /></div>
-        </div>
-        <div class="bg-right">
-            <div data-pos="rt"><img /></div>
-            <div data-pos="rm"><img /></div>
-            <div data-pos="rb"><img /></div>
-        </div>
-    </div>
-
     <!-- Header -->
     <header>
         <div class="container header-content">
@@ -48,52 +35,55 @@
     </header>
 
     <!-- Intro Section -->
-    <section id="intro" class="intro">
+    <section id="intro" class="section">
         <div class="container">
             <h2>
-                Hello, I'm 
-                <a class="download-link" href="assets/ReyMOronosJr-CV_2025.pdf" download>SirReyyy</a>
+            Hello, I'm 
+            <a class="download-link" href="assets/ReyMOronosJr-CV_2025.pdf" download>SirReyyy</a>
             </h2>
             <p>
-                I'm a passionate game developer who enjoys creating engaging and innovative experiences both professionally and as a hobby. Over the years, I've worked with a variety of game engines including Unreal Engine for Fortnite (UEFN), Unity, Unreal Engine, and Godot. My journey in game development has taken me through solo projects, collaborations, and freelance work, allowing me to explore and experience developing different game genres.
+            I'm a passionate game developer who enjoys creating engaging and innovative experiences both professionally and as a hobby. Over the years, I've worked with a variety of game engines including Unreal Engine for Fortnite (UEFN), Unity, Unreal Engine, and Godot. My journey in game development has taken me through solo projects, collaborations, and freelance work, allowing me to explore and experience developing different game genres.
             </p>
         </div>
     </section>
 
     <!-- History Section -->
     <section id="history-section" class="section">
-        <div class="container history-grid">
-            <!-- Work Experience -->
-            <div class="history-column">
-                <h2>Work Experience</h2>
-                <div class="work-history">
-                    <div class="work-item">
-                        <h4>UEFN Game Developer</h4>
-                        <p>Good Morning Games | January 2025 – March 2025</p>
-                    </div>
-                    <div class="work-item">
-                        <h4>Game Developer, Arduino Programmer, IT Specialist</h4>
-                        <p>LightUpToys | June 2023 – December 2024</p>
-                    </div>
-                    <div class="work-item">
-                        <h4>Game Developer</h4>
-                        <p>Polywick Graphics Ph. | March 2022 – September 2022</p>
+        <div class="container">
+        <!-- <h2>History</h2> -->
+            <div class="history-grid">
+                <!-- Work Experience -->
+                <div class="history-column">
+                    <h2>Work Experience</h2>
+                    <div class="work-history">
+                        <div class="work-item">
+                            <h4>UEFN Game Developer</h4>
+                            <p>Good Morning Games | January 2025 – March 2025</p>
+                        </div>
+                        <div class="work-item">
+                            <h4>Game Developer, Arduino Programmer, IT Specialist</h4>
+                            <p>LightUpToys | June 2023 – December 2024</p>
+                        </div>
+                        <div class="work-item">
+                            <h4>Game Developer</h4>
+                            <p>Polywick Graphics Ph. | March 2022 – September 2022</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- Education -->
-            <div class="history-column">
-                <h2>Education</h2>
-                <div class="work-history">
-                    <div class="work-item">
-                        <h4>Masters of Science in Engineering – Computer Engineering</h4>
-                        <p>Polytechnic University of the Philippines – Graduate School</p>
-                        <p>November 2018 – Present</p>
-                    </div>
-                    <div class="work-item">
-                        <h4>Bachelors of Science in Computer Engineering</h4>
-                        <p>Polytechnic University of the Philippines</p>
-                        <p>June 2013 – May 2018</p>
+                <!-- Education -->
+                <div class="history-column">
+                    <h2>Education</h2>
+                    <div class="work-history">
+                        <div class="work-item">
+                            <h4>Masters of Science in Engineering – Computer Engineering</h4>
+                            <p>Polytechnic University of the Philippines – Graduate School</p>
+                            <p>November 2018 – Present</p>
+                        </div>
+                        <div class="work-item">
+                            <h4>Bachelors of Science in Computer Engineering</h4>
+                            <p>Polytechnic University of the Philippines</p>
+                            <p>June 2013 – May 2018</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -103,48 +93,72 @@
     <!-- Portfolio Section -->
     <section id="portfolio" class="section">
         <div class="container">
-            <h2>Projects</h2>
+            <!-- <h2>Projects</h2> -->
 
             <!-- Unreal Engine for Fortnite -->
             <div class="engine-title">
                 <img src="img/logo/logo-uefn.png" alt="UEFN Logo" class="engine-logo">
                 <h3>Unreal Engine for Fortnite</h3>
             </div>
-            <div id="uefnGameGallery"></div>
-            <br>
+            <div id="uefnGameGallery" class="game-gallery"></div>
 
             <!-- Unity -->
             <div class="engine-title">
                 <img src="img/logo/logo-unity.png" alt="Unity Logo" class="engine-logo">
                 <h3>Unity</h3>
             </div>
-            <div id="unityGameGallery"></div>
-            <br>
+            <div id="unityGameGallery" class="game-gallery"></div>
 
             <!-- Unreal Engine -->
             <div class="engine-title">
                 <img src="img/logo/logo-ue.png" alt="UE Logo" class="engine-logo">
                 <h3>Unreal Engine</h3>
             </div>
-            <div id="unrealGameGallery"></div>
-            <br>
-
-            <!-- Godot -->
-            <!-- 
-            <div class="engine-title">
-                <img src="img/logo/logo-godot.png" alt="Godot Logo" class="engine-logo">
-                <h3>Godot</h3>
-            </div>
-            <div id="godotGameGallery"></div>
-            <br>
-            -->
+            <div id="unrealGameGallery" class="game-gallery"></div>
         </div>
     </section>
 
-    <!-- Scroll to Top Button -->
-    <button class="scroll-top" onclick="scrollToTop()">Back to Top</button>
+    <div class="fixed-buttons">
+        <button class="contact-fab" onclick="openContactForm()">✉ Get in Touch</button>
+        <button class="scroll-top" onclick="scrollToTop()">↑ Back to Top</button>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="contact-modal">
+        <div class="contact-modal-content">
+            <button class="close-modal" onclick="closeContactForm()">&times;</button>
+            <h2>Get in Touch</h2>
+            <form id="popupContactForm" class="contact-form" action="https://formsubmit.co/rey.oronos.jr@gmail.com" method="POST">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="Last Name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="Subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="details">Details</label>
+                    <textarea id="details" name="Details" rows="5" required></textarea>
+                </div>
+                <input type="hidden" name="_captcha" value="false">
+                <button type="submit" class="contact-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
 
     <!-- Footer -->
+    <br><br>
     <footer class="footer">
         <div class="container footer-content">
             <div class="left-links">
