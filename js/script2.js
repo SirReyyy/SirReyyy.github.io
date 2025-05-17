@@ -228,8 +228,8 @@ function createCard(game, showMapCode = false) {
   <div class="details-header">
     <h3 class="game-title">${game.title}</h3>
     <h5 class="game-tags">${game.tags}</h5>
-  </div>
-  <p>${game.description}</p>
+  </div><br>
+  <p class="description">${game.description}</p>
 `;
 
   // Action row: play button + screenshot strip

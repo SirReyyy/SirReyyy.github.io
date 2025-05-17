@@ -357,6 +357,16 @@ nav ul,
   margin-bottom: 1rem;
 }
 
+.description {
+  text-align: justify;
+  line-height: 1.5;
+  min-height: calc(5 * 1.5em); /* 5 lines minimum */
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  overflow-wrap: break-word;
+  display: block;
+}
+
 .card-hidden {
   opacity: 0.02;
   pointer-events: none;
