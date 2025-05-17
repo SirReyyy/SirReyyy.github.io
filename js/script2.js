@@ -1,6 +1,6 @@
 const uefnGameData = {
   "uefn-elevator": {
-    title: "Elevator Tower Escape",
+    title: "1 vs. 100",
     tags: "Arcade | Casual | Single Player | Shooter",
     thumbnail: "img/thumbnails/UEFN-Elevator.png",
     description: "Elevator Tower Escape lets you race against time in this arcade-inspired shooter! Armed with your trusty Mammoth Pistol and unlimited ammo, search for keycards hidden throughout a guard-infested tower. Outmaneuver 100 enemies, collect the keys, and escape before the timer hits zero.",
@@ -186,7 +186,7 @@ const unityGameData = {
 
 const unrealGameData = {
   "ue-tpdemo": {
-    title: "Third Person Demo",
+    title: "3rd Person Demo",
     tags: "3D | Casual | First Person | Third Person",
     thumbnail: "img/thumbnails/thumbnail.png",
     description: "Upward is a fast-paced competitive experience where players face off in 5 unique rounds, each testing different skills. Hone your mechanics in the Building Practice Arena, race upward in a vertical build challenge, survive the deadly rising lava, and unleash chaos in the elimination rounds. Every match is a new chance to dominate the arena!",
@@ -199,167 +199,150 @@ const unrealGameData = {
   }
 };
 
-
-// UEFN GAMES
-
-function createUEFNGameCards() {
-  const gallery = document.getElementById("uefnGameGallery");
-  for (const key in uefnGameData) {
-    const game = uefnGameData[key];
-
-    // Create card container
-    const card = document.createElement("div");
-    card.className = "card";
-
-    // Game thumbnail
-    const img = document.createElement("img");
-    img.src = game.thumbnail;
-    img.alt = game.title;
-    card.appendChild(img);
-
-    // Info icon
-    const infoIcon = document.createElement("div");
-    infoIcon.className = "info-icon";
-    infoIcon.textContent = "i";
-    card.appendChild(infoIcon);
-
-    // Details popup
-    const details = document.createElement("div");
-    details.className = "card-details";
-    details.innerHTML = `
-      <h3>${game.title}</h3>
-      <h5>${game.tags}</h5><br>
-      <p>${game.description}</p>
-      <a href="${game.link}" target="_blank" class="play-btn">Play</a>
-    `;
-    card.appendChild(details);
-
-    // Bottom row: title + map code (if any)
-    const titleRow = document.createElement("div");
-    titleRow.className = "title-row";
-    titleRow.innerHTML = `
-      <h3>${game.title.split(":")[0]}</h3>
-      <p class="map-code">${extractMapCode(game.link)}</p>
-    `;
-    card.appendChild(titleRow);
-
-    gallery.appendChild(card);
-  }
-}
-
+// === HELPERS ===
 function extractMapCode(link) {
-  // Example: return last segment if it's a valid code
   const parts = link.split("/");
   return parts.pop();
 }
 
+// === CARD CREATION ===
+function createCard(game, showMapCode = false) {
+  const card = document.createElement("div");
+  card.className = "card";
 
-// UNITY GAMES
+  // Set screenshots for hover backgrounds (if needed elsewhere)
+  if (game.screenshots && game.screenshots.length > 0) {
+    card.setAttribute("data-bg", game.screenshots.join(","));
+  }
+
+  // Game thumbnail
+  const img = document.createElement("img");
+  img.src = game.thumbnail;
+  img.alt = game.title;
+  card.appendChild(img);
+
+  // Details popup
+  const details = document.createElement("div");
+  details.className = "card-details";
+  details.innerHTML = `
+  <div class="details-header">
+    <h3 class="game-title">${game.title}</h3>
+    <h5 class="game-tags">${game.tags}</h5>
+  </div>
+  <p>${game.description}</p>
+`;
+
+  // Action row: play button + screenshot strip
+  const actionRow = document.createElement("div");
+  actionRow.className = "card-action-row";
+
+  // Screenshot strip
+  if (game.screenshots && game.screenshots.length > 0) {
+    const strip = document.createElement("div");
+    strip.className = "screenshot-strip";
+    game.screenshots.forEach(url => {
+      const thumb = document.createElement("img");
+      thumb.src = url;
+      thumb.alt = `${game.title} screenshot`;
+      strip.appendChild(thumb);
+    });
+    actionRow.appendChild(strip);
+  }
+
+  details.appendChild(actionRow);
+
+  // Play button
+  const playBtn = document.createElement("a");
+  playBtn.href = game.link;
+  playBtn.target = "_blank";
+  playBtn.className = "play-btn";
+  playBtn.textContent = "Play";
+  actionRow.appendChild(playBtn);
+
+  // Add details to card
+  card.appendChild(details);
+
+  // Title row (with optional map code)
+  const titleRow = document.createElement("div");
+  titleRow.className = "title-row";
+  titleRow.innerHTML = `
+    <h3>${game.title.split(":")[0]}</h3>
+    ${showMapCode ? `<p class="map-code">${extractMapCode(game.link)}</p>` : ""}
+  `;
+  card.appendChild(titleRow);
+
+  return card;
+}
+
+// === CARD GALLERY BUILDERS ===
+function createUEFNGameCards() {
+  const gallery = document.getElementById("uefnGameGallery");
+  for (const key in uefnGameData) {
+    const card = createCard(uefnGameData[key], true);
+    gallery.appendChild(card);
+  }
+  // setupBackgroundHover(gallery);
+}
 
 function createUnityGameCards() {
   const gallery = document.getElementById("unityGameGallery");
   for (const key in unityGameData) {
-    const game = unityGameData[key];
-
-    // Create card container
-    const card = document.createElement("div");
-    card.className = "card";
-
-    // Game thumbnail
-    const img = document.createElement("img");
-    img.src = game.thumbnail;
-    img.alt = game.title;
-    card.appendChild(img);
-
-    // Info icon
-    const infoIcon = document.createElement("div");
-    infoIcon.className = "info-icon";
-    infoIcon.textContent = "i";
-    card.appendChild(infoIcon);
-
-    // Details popup
-    const details = document.createElement("div");
-    details.className = "card-details";
-    details.innerHTML = `
-      <h3>${game.title}</h3>
-      <h5>${game.tags}</h5><br>
-      <p>${game.description}</p>
-      <a href="${game.link}" target="_blank" class="play-btn">Play</a>
-    `;
-    card.appendChild(details);
-
-    // Bottom row: title + map code (if any)
-    const titleRow = document.createElement("div");
-    titleRow.className = "title-row";
-    titleRow.innerHTML = `
-      <h3>${game.title.split(":")[0]}</h3>
-    `;
-    card.appendChild(titleRow);
-
+    const card = createCard(unityGameData[key]);
     gallery.appendChild(card);
   }
+  // setupBackgroundHover(gallery);
 }
-
-
-// UNREAL GAMES
 
 function createUnrealGameCards() {
   const gallery = document.getElementById("unrealGameGallery");
   for (const key in unrealGameData) {
-    const game = unrealGameData[key];
-
-    // Create card container
-    const card = document.createElement("div");
-    card.className = "card";
-
-    // Game thumbnail
-    const img = document.createElement("img");
-    img.src = game.thumbnail;
-    img.alt = game.title;
-    card.appendChild(img);
-
-    // Info icon
-    const infoIcon = document.createElement("div");
-    infoIcon.className = "info-icon";
-    infoIcon.textContent = "i";
-    card.appendChild(infoIcon);
-
-    // Details popup
-    const details = document.createElement("div");
-    details.className = "card-details";
-    details.innerHTML = `
-      <h3>${game.title}</h3>
-      <h5>${game.tags}</h5><br>
-      <p>${game.description}</p>
-      <a href="${game.link}" target="_blank" class="play-btn">Play</a>
-    `;
-    card.appendChild(details);
-
-    // Bottom row: title + map code (if any)
-    const titleRow = document.createElement("div");
-    titleRow.className = "title-row";
-    titleRow.innerHTML = `
-      <h3>${game.title.split(":")[0]}</h3>
-    `;
-    card.appendChild(titleRow);
-
+    const card = createCard(unrealGameData[key]);
     gallery.appendChild(card);
   }
+  // setupBackgroundHover(gallery);
+}
+
+// === SCROLL TO TOP ===
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// === THEME SWITCHING ===
+function setTheme(theme) {
+  document.body.className = '';
+  document.body.classList.add(`theme-${theme}`);
 }
 
 
+// === INIT ===
 document.addEventListener("DOMContentLoaded", createUEFNGameCards);
 document.addEventListener("DOMContentLoaded", createUnityGameCards);
 document.addEventListener("DOMContentLoaded", createUnrealGameCards);
 
 
+document.addEventListener('mouseover', function(e) {
+  if (e.target.matches('.screenshot-strip img')) {
+    const cardDetails = e.target.closest('.card-details');
+    // Remove any existing zoomed image
+    const existingZoom = cardDetails.querySelector('.zoomed-center');
+    if (existingZoom) existingZoom.remove();
+    // Clone the hovered image
+    const zoomed = e.target.cloneNode(true);
+    zoomed.classList.add('zoomed-center');
+    cardDetails.appendChild(zoomed);
+  }
+});
 
-
-function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function setTheme(theme) {
-  document.body.className = '';
-  document.body.classList.add(`theme-${theme}`);
-}
+document.addEventListener('mouseout', function(e) {
+  // Remove zoomed image when mouse leaves the image or card-details
+  if (
+    e.target.matches('.screenshot-strip img') ||
+    (e.target.classList && e.target.classList.contains('card-details'))
+  ) {
+    const cardDetails = e.target.closest('.card-details') || e.target;
+    if (cardDetails) {
+      const zoomed = cardDetails.querySelector('.zoomed-center');
+      if (zoomed) zoomed.remove();
+    }
+  }
+});
