@@ -5,14 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>SirReyy</title>
     <link rel="stylesheet" href="css/new-style.css" />
+    
     <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            // const themes = ['theme-labo'];
+        document.addEventListener('DOMContentLoaded', () => {
+            // Theme selection
             const themes = ['theme-nsw','theme-gb','theme-gbc'];
             const randomTheme = themes[Math.floor(Math.random() * themes.length)];
             document.body.classList.add(randomTheme);
+
+            // Logo swapping based on theme
+            const themeClass = Array.from(document.body.classList).find(cls => cls.startsWith('theme-'));
+            if (!themeClass) return;
+
+            const themePrefix = themeClass.replace('theme-', ''); // e.g., 'gb'
+
+            document.querySelectorAll('img[data-logo]').forEach(img => {
+                const iconName = img.getAttribute('data-logo'); // e.g., 'github'
+                img.src = `img/logo/${themePrefix}-${iconName}.png`;
+            });
         });
     </script>
+
 </head>
 <body>
     <!-- Header -->
@@ -20,7 +33,7 @@
         <div class="container header-content">
             <div class="site-title">
                 <div class="engine-title">
-                    <img src="img/logo/logo-sirreyyy.png" alt="SirReyyy Logo" class="engine-logo">
+                    <img src="img/logo/logo-sirreyyy.png" alt="SirReyyy Logo" class="engine-logo" data-logo="sirreyyy">
                     <h1><a href="index.html">Rey M. Oronos, Jr.</a></h1>
                 </div>
             </div>
@@ -97,24 +110,31 @@
 
             <!-- Unreal Engine for Fortnite -->
             <div class="engine-title">
-                <img src="img/logo/logo-uefn.png" alt="UEFN Logo" class="engine-logo">
+                <img src="img/logo/logo-uefn.png" alt="UEFN Logo" class="engine-logo" data-logo="uefn">
                 <h3>Unreal Engine for Fortnite</h3>
             </div>
             <div id="uefnGameGallery" class="game-gallery"></div>
 
             <!-- Unity -->
             <div class="engine-title">
-                <img src="img/logo/logo-unity.png" alt="Unity Logo" class="engine-logo">
+                <img src="img/logo/logo-unity.png" alt="Unity Logo" class="engine-logo" data-logo="unity">
                 <h3>Unity</h3>
             </div>
             <div id="unityGameGallery" class="game-gallery"></div>
 
             <!-- Unreal Engine -->
             <div class="engine-title">
-                <img src="img/logo/logo-ue.png" alt="UE Logo" class="engine-logo">
+                <img src="img/logo/logo-ue.png" alt="UE Logo" class="engine-logo" data-logo="ue">
                 <h3>Unreal Engine</h3>
             </div>
             <div id="unrealGameGallery" class="game-gallery"></div>
+
+            <!-- Godot -->
+            <!-- <div class="engine-title">
+                <img src="img/logo/logo-godot.png" alt="Godot Logo" class="engine-logo" data-logo="godot">
+                <h3>Godot</h3>
+            </div>
+            <div id="godotGameGallery" class="game-gallery"></div> -->
         </div>
     </section>
 
@@ -163,13 +183,13 @@
         <div class="container footer-content">
             <div class="left-links">
                 <a href="https://www.linkedin.com/in/reymoronosjr" target="_blank">
-                    <img src="img/logo/logo-linkedin.png" alt="LinkedIn" class="footer-icon">
+                    <img src="img/logo/logo-linkedin.png" alt="LinkedIn" class="footer-icon" data-logo="linkedin">
                 </a>
                 <a href="https://github.com/SirReyyy" target="_blank">
-                    <img src="img/logo/logo-github.png" alt="GitHub" class="footer-icon">
+                    <img src="img/logo/logo-github.png" alt="GitHub" class="footer-icon" data-logo="github">
                 </a>
                 <a href="https://sirreyyy.itch.io" target="_blank">
-                    <img src="img/logo/logo-itch.png" alt="Itch.io" class="footer-icon">
+                    <img src="img/logo/logo-itch.png" alt="Itch.io" class="footer-icon" data-logo="itch">
                 </a>
             </div>
             <div class="right-text">
