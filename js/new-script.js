@@ -98,6 +98,18 @@ const uefnGameData = {
 };
 
 const unityGameData = {
+  "unity-tictac": {
+    title: "Tic Tac Tournament",
+    tags: "2D | Arcade | Casual | Multiplayer",
+    thumbnail: "img/thumbnails/Unity-TicTac.png",
+    description: "Tic Tac Tournament is a local multiplayer game where players take turns placing 3 marks per turn, each in a different section of a 9x9 grid made of smaller boards. Win sections by forming lines, then align 3 won sections to claim victory on the big board.",
+    screenshots: [
+      "img/screenshots/unity-tictac-1.png",
+      "img/screenshots/unity-tictac-2.png",
+      "img/screenshots/unity-tictac-3.png"
+    ],
+    link: "https://sirreyyy.itch.io/tictac-tournament"
+  },
   "unity-pocket": {
     title: "Pocket Merge",
     tags: "2D | Arcade | Casual | Puzzle",
