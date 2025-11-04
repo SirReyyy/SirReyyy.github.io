@@ -248,6 +248,7 @@ nav ul,
 /* === GALLERY GRID === */
 #uefnGameGallery,
 #unityGameGallery,
+#godotGameGallery,
 #unrealGameGallery {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -257,6 +258,7 @@ nav ul,
 @media (max-width: 900px) {
   #uefnGameGallery,
   #unityGameGallery,
+  #godotGameGallery,
   #unrealGameGallery {
     grid-template-columns: 1fr;
   }
@@ -476,6 +478,7 @@ body::before {
 @media (max-width: 768px) {
   #uefnGameGallery,
   #unityGameGallery,
+  #godotGameGallery,
   #unrealGameGallery {
     grid-template-columns: 1fr;
   }

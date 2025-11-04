@@ -9,7 +9,8 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Theme selection
-            const themes = ['theme-nsw','theme-gb','theme-gbc'];
+            // const themes = ['theme-nsw','theme-gb','theme-gbc'];
+            const themes = ['theme-nsw'];
             const randomTheme = themes[Math.floor(Math.random() * themes.length)];
             document.body.classList.add(randomTheme);
 
@@ -122,6 +123,13 @@
             </div>
             <div id="unityGameGallery" class="game-gallery"></div>
 
+            <!-- Godot -->
+            <div class="engine-title">
+                <img src="img/logo/logo-godot.png" alt="Godot Logo" class="engine-logo" data-logo="godot">
+                <h3>Godot</h3>
+            </div>
+            <div id="godotGameGallery" class="game-gallery"></div>
+
             <!-- Unreal Engine -->
             <div class="engine-title">
                 <img src="img/logo/logo-ue.png" alt="UE Logo" class="engine-logo" data-logo="ue">
@@ -129,12 +137,7 @@
             </div>
             <div id="unrealGameGallery" class="game-gallery"></div>
 
-            <!-- Godot -->
-            <!-- <div class="engine-title">
-                <img src="img/logo/logo-godot.png" alt="Godot Logo" class="engine-logo" data-logo="godot">
-                <h3>Godot</h3>
-            </div>
-            <div id="godotGameGallery" class="game-gallery"></div> -->
+            
         </div>
     </section>
 

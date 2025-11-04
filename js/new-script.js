@@ -196,6 +196,21 @@ const unityGameData = {
   }
 };
 
+const godotGameData = {
+  "gd-2dplatformer": {
+    title: "GD 2D Platformer",
+    tags: "2D | Arcade | Casual | Platformer",
+    thumbnail: "img/thumbnails/no_thumbnail.png",
+    description: "GD 2D Platformer is a fun, fast-paced puzzle adventure featuring five unique worlds and fifty handcrafted stages! Jump, dash, and solve platforming challenges as you collect gems and coins scattered across each level. Unlock and play as five distinct characters, each bringing their own flair to the journey.",
+    screenshots: [
+      "img/screenshots/gd-2dplatformer-1.png",
+      "img/screenshots/gd-2dplatformer-2.png",
+      "img/screenshots/gd-2dplatformer-3.png"
+    ],
+    link: "https://sirreyyy.itch.io/gd-2d-platformer"
+  }
+};
+
 const unrealGameData = {
   "ue-tpdemo": {
     title: "3rd Person Demo",
@@ -297,6 +312,7 @@ function buildGallery(galleryId, gameData) {
 // Build all galleries (add your own data sources as needed)
 buildGallery("uefnGameGallery", uefnGameData);
 buildGallery("unityGameGallery", unityGameData);
+buildGallery("godotGameGallery", godotGameData);
 buildGallery("unrealGameGallery", unrealGameData);
 
 // Screenshot zoom effect (hover to duplicate and center)
