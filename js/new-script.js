@@ -1,4 +1,16 @@
 const uefnGameData = {
+  "uefn-hotel": {
+    title: "The Endless Hotel",
+    tags: "Arcade | Casual | Single Player | Horror",
+    thumbnail: "img/thumbnails/UEFN-Hotel.png",
+    description: "The Endless Hotel is a surreal, atmospheric experience that plunges players into an infinite hotel filled with eerie corridors, shifting rooms, and haunting mysteries. With its unsettling ambiance, anomalies, and ever-changing layout, it offers a unique blend of exploration and psychological horror.",
+    screenshots: [
+      "img/screenshots/uefn-hotel-1.png",
+      "img/screenshots/uefn-hotel-2.png",
+      "img/screenshots/uefn-hotel-3.png"
+    ],
+    link: "https://www.fortnite.com/@sirreyyy/1910-8664-1172"
+  },
   "uefn-elevator": {
     title: "1 vs. 100",
     tags: "Arcade | Casual | Single Player | Shooter",
@@ -98,6 +110,18 @@ const uefnGameData = {
 };
 
 const unityGameData = {
+  "unity-multiplayer": {
+    title: "Multiplayer City",
+    tags: "3D | Arcade | Casual | Multiplayer",
+    thumbnail: "img/thumbnails/Unity-Multiplayer.png",
+    description: "Multiplayer City is a chaotic, arcade-style multiplayer showing a demo of how players create rooms and lobbys, then join and play together. It features a simple arena where players can run around, interact with objects, and have fun in a shared space. The game demonstrates the core mechanics of multiplayer connectivity and player interaction.",
+    screenshots: [
+      "img/screenshots/unity-multicity-1.png",
+      "img/screenshots/unity-multicity-2.png",
+      "img/screenshots/unity-multicity-3.png"
+    ],
+    link: "https://sirreyyy.itch.io/multiplayer-city"
+  },
   "unity-tictac": {
     title: "Tic Tac Tournament",
     tags: "2D | Arcade | Casual | Multiplayer",
