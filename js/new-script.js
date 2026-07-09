@@ -1,7 +1,17 @@
+const featuredGames = [
+    "uefn-hotel",
+    "uefn-elevator",
+    "unity-multiplayer",
+    "unity-tictac",
+    // "gd-2dplatformer",
+    "unity-pocket"
+    // "ue-tpdemo"
+];
+
 const uefnGameData = {
   "uefn-hotel": {
     title: "The Endless Hotel",
-    tags: "Arcade | Casual | Single Player | Horror",
+    tags: "Arcade | Casual | Horror | Single Player",
     thumbnail: "img/thumbnails/UEFN-Hotel.png",
     description: "The Endless Hotel is a surreal, atmospheric experience that plunges players into an infinite hotel filled with eerie corridors, shifting rooms, and haunting mysteries. With its unsettling ambiance, anomalies, and ever-changing layout, it offers a unique blend of exploration and psychological horror.",
     screenshots: [
@@ -258,102 +268,122 @@ function extractMapCode(link) {
 }
 
 // Card creation
-function createCard(game, showMapCode = false) {
+function createCard(game) {
   const card = document.createElement("div");
   card.className = "card";
 
-  // Set screenshots for hover backgrounds (if needed elsewhere)
-  if (game.screenshots && game.screenshots.length > 0) {
-    card.setAttribute("data-bg", game.screenshots.join(","));
+  // =========================
+  // IMAGE CAROUSEL WRAPPER
+  // =========================
+  const media = document.createElement("div");
+  media.className = "card-media";
+
+  const imageList = game.screenshots?.length
+    ? [game.thumbnail, ...game.screenshots]
+    : [game.thumbnail];
+
+  let currentIndex = 0;
+
+  const img = document.createElement("img");
+  img.src = imageList[0];
+  img.alt = game.title;
+
+  media.appendChild(img);
+
+  // LEFT ARROW
+  const left = document.createElement("button");
+  left.className = "media-arrow left";
+  left.innerHTML = "‹";
+
+  // RIGHT ARROW
+  const right = document.createElement("button");
+  right.className = "media-arrow right";
+  right.innerHTML = "›";
+
+  function updateImage() {
+    img.src = imageList[currentIndex];
   }
 
-  // Game thumbnail
-  const img = document.createElement("img");
-  img.src = game.thumbnail;
-  img.alt = game.title;
-  card.appendChild(img);
+  left.onclick = (e) => {
+    e.stopPropagation();
+    currentIndex = (currentIndex - 1 + imageList.length) % imageList.length;
+    updateImage();
+  };
 
-  // Details popup
-  const details = document.createElement("div");
-  details.className = "card-details";
-  details.innerHTML = `
-    <div class="details-header">
-      <h3 class="game-title">${game.title}</h3>
-      <h5 class="game-tags">${game.tags}</h5>
-    </div><br>
+  right.onclick = (e) => {
+    e.stopPropagation();
+    currentIndex = (currentIndex + 1) % imageList.length;
+    updateImage();
+  };
+
+  media.appendChild(left);
+  media.appendChild(right);
+
+  // =========================
+  // INFO SECTION
+  // =========================
+  const info = document.createElement("div");
+  info.className = "card-info";
+
+  info.innerHTML = `
+    <h3 class="game-title">${game.title}</h3>
+    <p class="game-tags">${game.tags}</p>
     <p class="description">${game.description}</p>
   `;
 
-  // Action row: play button + screenshot strip
-  const actionRow = document.createElement("div");
-  actionRow.className = "card-action-row";
-
-  // Screenshot strip
-  if (game.screenshots && game.screenshots.length > 0) {
-    const strip = document.createElement("div");
-    strip.className = "screenshot-strip";
-    game.screenshots.forEach(url => {
-      const thumb = document.createElement("img");
-      thumb.src = url;
-      thumb.alt = `${game.title} screenshot`;
-      strip.appendChild(thumb);
-    });
-    actionRow.appendChild(strip);
-  }
-
-  // Play button
+  // PLAY BUTTON
   const playBtn = document.createElement("a");
   playBtn.href = game.link;
   playBtn.target = "_blank";
   playBtn.className = "play-btn";
   playBtn.textContent = "Play";
-  actionRow.appendChild(playBtn);
 
-  details.appendChild(actionRow);
-  card.appendChild(details);
+  info.appendChild(playBtn);
 
-  // Title row (with optional map code)
-  const titleRow = document.createElement("div");
-  titleRow.className = "title-row";
-  titleRow.innerHTML = `
-    <h3>${game.title.split(":")[0]}</h3>
-    ${showMapCode ? `<p class="map-code">${extractMapCode(game.link)}</p>` : ""}
-  `;
-  card.appendChild(titleRow);
+  // BUILD CARD
+  card.appendChild(media);
+  card.appendChild(info);
+
+  // =========================
+  // HOVER RESET BEHAVIOR
+  // =========================
+  card.addEventListener("mouseleave", () => {
+    currentIndex = 0;
+    img.src = imageList[0];
+  });
 
   return card;
 }
 
-// Gallery builder (example for Unreal)
+// Gallery builder
 function buildGallery(galleryId, gameData) {
   const gallery = document.getElementById(galleryId);
   if (!gallery) return;
+
   Object.values(gameData).forEach(game => {
     gallery.appendChild(createCard(game));
   });
 }
 
-// Build all galleries (add your own data sources as needed)
+// Build all galleries
 buildGallery("uefnGameGallery", uefnGameData);
 buildGallery("unityGameGallery", unityGameData);
 buildGallery("godotGameGallery", godotGameData);
 buildGallery("unrealGameGallery", unrealGameData);
 
-// Screenshot zoom effect (hover to duplicate and center)
+// Screenshot zoom effect (kept as-is)
 document.addEventListener('mouseover', function(e) {
   if (e.target.matches('.screenshot-strip img')) {
     const cardDetails = e.target.closest('.card-details');
-    // Remove any existing zoomed image
     const existingZoom = cardDetails.querySelector('.zoomed-center');
     if (existingZoom) existingZoom.remove();
-    // Clone the hovered image
+
     const zoomed = e.target.cloneNode(true);
     zoomed.classList.add('zoomed-center');
     cardDetails.appendChild(zoomed);
   }
 });
 
-// Remove zoomed image only when mouse leaves the entire card-details
 document.addEventListener('mouseleave', function(e) {
   if (e.target.classList && e.target.classList.contains('card-details')) {
     const zoomed = e.target.querySelector('.zoomed-center');
@@ -361,7 +391,7 @@ document.addEventListener('mouseleave', function(e) {
   }
 }, true);
 
-
+// UI helpers
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -371,12 +401,186 @@ function openContactForm() {
 }
 
 function closeContactForm() {
-  // Clear form fields
   document.getElementById('popupContactForm').reset();
   document.getElementById('contactModal').classList.remove('active');
 }
 
-// Optional: Close modal on ESC key
 document.addEventListener('keydown', function(e) {
   if (e.key === "Escape") closeContactForm();
+});
+
+
+
+const allGames = {
+    ...uefnGameData,
+    ...unityGameData,
+    ...godotGameData,
+    ...unrealGameData
+};
+
+function getEngine(gameID){
+    if(gameID.startsWith("uefn"))
+        return "Unreal Editor for Fortnite";
+    if(gameID.startsWith("unity"))
+        return "Unity";
+    if(gameID.startsWith("godot"))
+        return "Godot";
+    if(gameID.startsWith("ue"))
+        return "Unreal Engine";
+    return "";
+}
+
+let featuredIndex = 0;
+let featuredTimer;
+
+function showFeatured(id) {
+
+    const game = allGames[id];
+    if (!game) return;
+
+    const image = document.getElementById("featuredImage");
+    const title = document.getElementById("featuredTitle");
+    const description = document.getElementById("featuredDescription");
+    const logo = document.getElementById("featuredEngineLogo");
+
+    if (image) image.src = game.thumbnail;
+    if (title) title.textContent = game.title;
+    if (description) description.textContent = game.description;
+    if (logo) logo.src = getEngineLogo(id);
+
+    document.querySelectorAll(".featured-progress").forEach(bar => {
+        bar.style.width = "0%";
+    });
+
+    const activeItem = document.querySelector(`[data-featured="${id}"]`);
+    if (activeItem) {
+        activeItem.classList.add("active");
+    }
+}
+
+function getEngineLogo(id){
+
+    if(id.startsWith("uefn"))
+        return "img/logo/logo-uefn.png";
+
+    if(id.startsWith("unity"))
+        return "img/logo/logo-unity.png";
+
+    if(id.startsWith("godot"))
+        return "img/logo/logo-godot.png";
+
+    if(id.startsWith("ue"))
+        return "img/logo/logo-ue.png";
+
+}
+
+function createFeatured(){
+
+    const list = document.getElementById("featuredList");
+    list.innerHTML = "";
+
+    featuredGames.forEach((id,index)=>{
+
+        const game = allGames[id];
+
+        const item = document.createElement("div");
+
+        item.className = "featured-item";
+        item.dataset.featured = id;
+
+        item.innerHTML = `
+            <img src="${game.thumbnail}">
+            <div class="featured-item-info">
+                <h4>${game.title}</h4>
+                <p>${getEngine(id)}</p>
+            </div>
+            <div class="featured-progress"></div>
+        `;
+
+        item.addEventListener("mouseenter",()=>{
+            featuredIndex=index;
+            showFeatured(id);
+            restartFeaturedTimer();
+        });
+
+        item.addEventListener("click",()=>{
+            featuredIndex=index;
+            showFeatured(id);
+            restartFeaturedTimer();
+        });
+
+        list.appendChild(item);
+    });
+
+    showFeatured(featuredGames[0]);
+    restartFeaturedTimer();
+}
+
+function restartFeaturedTimer(){
+
+    clearInterval(featuredTimer);
+
+    const activeBar=document.querySelector(".featured-item.active .featured-progress");
+
+    if(activeBar){
+
+        activeBar.style.transition="none";
+        activeBar.style.width="0%";
+
+        requestAnimationFrame(()=>{
+            activeBar.style.transition="width 6s linear";
+            activeBar.style.width="100%";
+        });
+
+    }
+
+    featuredTimer=setInterval(()=>{
+
+        featuredIndex++;
+
+        if(featuredIndex>=featuredGames.length)
+            featuredIndex=0;
+
+        showFeatured(featuredGames[featuredIndex]);
+
+        restartFeaturedTimer();
+
+    },6000);
+
+}
+
+createFeatured();
+
+
+
+/* ============================
+   Contact Modal
+============================ */
+
+function openContactForm() {
+    const modal = document.getElementById("contactModal");
+    modal.classList.add("show");
+    document.body.style.overflow = "hidden";
+}
+
+function closeContactForm() {
+    const modal = document.getElementById("contactModal");
+    modal.classList.remove("show");
+    document.body.style.overflow = "";
+}
+
+// Close when clicking outside
+window.addEventListener("click", function(e) {
+    const modal = document.getElementById("contactModal");
+
+    if (e.target === modal) {
+        closeContactForm();
+    }
+});
+
+// ESC key closes modal
+document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") {
+        closeContactForm();
+    }
 });

@@ -1,108 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>SirReyy</title>
     <link rel="stylesheet" href="css/new-style.css" />
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Theme selection
-            // const themes = ['theme-nsw','theme-gb','theme-gbc'];
-            const themes = ['theme-nsw'];
-            const randomTheme = themes[Math.floor(Math.random() * themes.length)];
-            document.body.classList.add(randomTheme);
-
-            // Logo swapping based on theme
-            const themeClass = Array.from(document.body.classList).find(cls => cls.startsWith('theme-'));
-            if (!themeClass) return;
-
-            const themePrefix = themeClass.replace('theme-', ''); // e.g., 'gb'
-
-            document.querySelectorAll('img[data-logo]').forEach(img => {
-                const iconName = img.getAttribute('data-logo'); // e.g., 'github'
-                img.src = `img/logo/${themePrefix}-${iconName}.png`;
-            });
-        });
-    </script>
-
 </head>
+
 <body>
     <!-- Header -->
-    <header>
+    <header class="site-header">
         <div class="container header-content">
-            <div class="site-title">
-                <div class="engine-title">
-                    <img src="img/logo/logo-sirreyyy.png" alt="SirReyyy Logo" class="engine-logo" data-logo="sirreyyy">
-                    <h1><a href="index.html">Rey M. Oronos, Jr.</a></h1>
+
+            <a href="index.html" class="brand">
+
+                <img src="img/logo/sirreyyy.png"
+                    class="brand-logo"
+                    data-logo="sirreyyy">
+
+                <div class="brand-text">
+                    <h1>Rey M. Oronos, Jr.</h1>
+                    <!-- <p>Game Developer</p> -->
                 </div>
-            </div>
+            </a>
+
             <nav class="site-nav">
-                <ul>
-                    <li><a href="#intro">About</a></li>
-                    <li><a href="#portfolio">Projects</a></li>
-                    <li><a class="download-link" href="assets/ReyMOronosJr-CV_2025.pdf" download>Resume</a></li>
-                </ul>
+                <a href="#featured">Featured</a>
+                <a href="#portfolio">Projects</a>
+                <a href="assets/ReyMOronosJr-CV_2025.pdf" download>Resume</a>
+                <!-- <a href="#contact">Contact</a> -->
+                <a href="#" onclick="openContactForm(); return false;">Contact</a>
             </nav>
         </div>
+        <br><br>
+
     </header>
 
+    <!-- Featured -->
+    <section id="featured" class="section">
+        <div class="container">
+            <div class="featured-layout">
+                <!-- Main Featured -->
+                <div id="featuredHero" class="featured-hero">
+
+                    <img id="featuredImage" src="" alt="Featured Game">
+
+                    <div class="featured-bottom">
+                        <img
+                            id="featuredEngineLogo"
+                            class="featured-engine-logo"
+                            src=""
+                        >
+                        <h2 id="featuredTitle"></h2>
+                    </div>
+                </div>
+
+                <!-- Featured Menu -->
+                <div id="featuredList" class="featured-list">
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Intro Section -->
-    <section id="intro" class="section">
+    <!-- <section id="intro" class="section">
         <div class="container">
             <h2>
             Hello, I'm 
-            <a class="download-link" href="assets/ReyMOronosJr-CV_2025.pdf" download>SirReyyy</a>
+            <a class="download-link" href="assets/ReyMOronosJr-CV_2026.pdf" download>SirReyyy</a>
             </h2>
             <p>
             I'm a passionate game developer who enjoys creating engaging and innovative experiences both professionally and as a hobby. Over the years, I've worked with a variety of game engines including Unreal Engine for Fortnite (UEFN), Unity, Unreal Engine, and Godot. My journey in game development has taken me through solo projects, collaborations, and freelance work, allowing me to explore and experience developing different game genres.
             </p>
         </div>
-    </section>
-
-    <!-- History Section -->
-    <section id="history-section" class="section">
-        <div class="container">
-        <!-- <h2>History</h2> -->
-            <div class="history-grid">
-                <!-- Work Experience -->
-                <div class="history-column">
-                    <h2>Work Experience</h2>
-                    <div class="work-history">
-                        <div class="work-item">
-                            <h4>UEFN Game Developer</h4>
-                            <p>Good Morning Games | January 2025 – March 2025</p>
-                        </div>
-                        <div class="work-item">
-                            <h4>Game Developer, Arduino Programmer, IT Specialist</h4>
-                            <p>LightUpToys | June 2023 – December 2024</p>
-                        </div>
-                        <div class="work-item">
-                            <h4>Game Developer</h4>
-                            <p>Polywick Graphics Ph. | March 2022 – September 2022</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Education -->
-                <div class="history-column">
-                    <h2>Education</h2>
-                    <div class="work-history">
-                        <div class="work-item">
-                            <h4>Masters of Science in Engineering – Computer Engineering</h4>
-                            <p>Polytechnic University of the Philippines – Graduate School</p>
-                            <p>November 2018 – Present</p>
-                        </div>
-                        <div class="work-item">
-                            <h4>Bachelors of Science in Computer Engineering</h4>
-                            <p>Polytechnic University of the Philippines</p>
-                            <p>June 2013 – May 2018</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    </section> -->
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="section">
@@ -111,28 +83,28 @@
 
             <!-- Unreal Engine for Fortnite -->
             <div class="engine-title">
-                <img src="img/logo/logo-uefn.png" alt="UEFN Logo" class="engine-logo" data-logo="uefn">
+                <img src="img/logo/uefn.png" alt="UEFN Logo" class="engine-logo" data-logo="uefn">
                 <h3>Unreal Engine for Fortnite</h3>
             </div>
             <div id="uefnGameGallery" class="game-gallery"></div>
 
             <!-- Unity -->
             <div class="engine-title">
-                <img src="img/logo/logo-unity.png" alt="Unity Logo" class="engine-logo" data-logo="unity">
+                <img src="img/logo/unity.png" alt="Unity Logo" class="engine-logo" data-logo="unity">
                 <h3>Unity</h3>
             </div>
             <div id="unityGameGallery" class="game-gallery"></div>
 
             <!-- Godot -->
             <div class="engine-title">
-                <img src="img/logo/logo-godot.png" alt="Godot Logo" class="engine-logo" data-logo="godot">
+                <img src="img/logo/godot.png" alt="Godot Logo" class="engine-logo" data-logo="godot">
                 <h3>Godot</h3>
             </div>
             <div id="godotGameGallery" class="game-gallery"></div>
 
             <!-- Unreal Engine -->
             <div class="engine-title">
-                <img src="img/logo/logo-ue.png" alt="UE Logo" class="engine-logo" data-logo="ue">
+                <img src="img/logo/ue.png" alt="UE Logo" class="engine-logo" data-logo="ue">
                 <h3>Unreal Engine</h3>
             </div>
             <div id="unrealGameGallery" class="game-gallery"></div>
@@ -141,65 +113,37 @@
         </div>
     </section>
 
-    <div class="fixed-buttons">
-        <button class="contact-fab" onclick="openContactForm()">✉ Get in Touch</button>
-        <button class="scroll-top" onclick="scrollToTop()">↑ Back to Top</button>
-    </div>
-
-    <!-- Contact Modal -->
-    <div id="contactModal" class="contact-modal">
-        <div class="contact-modal-content">
-            <button class="close-modal" onclick="closeContactForm()">&times;</button>
-            <h2>Get in Touch</h2>
-            <form id="popupContactForm" class="contact-form" action="https://formsubmit.co/rey.oronos.jr@gmail.com" method="POST">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="firstName">First Name</label>
-                        <input type="text" id="firstName" name="First Name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="lastName">Last Name</label>
-                        <input type="text" id="lastName" name="Last Name" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="Email" required>
-                </div>
-                <div class="form-group">
-                    <label for="subject">Subject</label>
-                    <input type="text" id="subject" name="Subject" required>
-                </div>
-                <div class="form-group">
-                    <label for="details">Details</label>
-                    <textarea id="details" name="Details" rows="5" required></textarea>
-                </div>
-                <input type="hidden" name="_captcha" value="false">
-                <button type="submit" class="contact-btn">Send Message</button>
-            </form>
-        </div>
-    </div>
-
     <!-- Footer -->
     <br><br>
     <footer class="footer">
         <div class="container footer-content">
-            <div class="left-links">
-                <a href="https://www.linkedin.com/in/reymoronosjr" target="_blank">
-                    <img src="img/logo/logo-linkedin.png" alt="LinkedIn" class="footer-icon" data-logo="linkedin">
-                </a>
-                <a href="https://github.com/SirReyyy" target="_blank">
-                    <img src="img/logo/logo-github.png" alt="GitHub" class="footer-icon" data-logo="github">
-                </a>
-                <a href="https://sirreyyy.itch.io" target="_blank">
-                    <img src="img/logo/logo-itch.png" alt="Itch.io" class="footer-icon" data-logo="itch">
-                </a>
+
+            <div class="footer-left">
+                <a href="https://github.com/SirReyyy"><img src="img/logo/github.png" class="footer-icon"></a>
+                <a href="https://www.linkedin.com/in/reymoronosjr/"><img src="img/logo/linkedin.png" class="footer-icon"></a>
+                <a href="https://sirreyyy.itch.io/"><img src="img/logo/itch.png" class="footer-icon"></a>
             </div>
-            <div class="right-text">
-                <h3>&copy; 2025 SirReyyy</h3>
+
+            <div class="footer-center">
+                <h3>© 2026 SirReyyy</h3>
             </div>
+
+            <div class="footer-actions">
+                <!-- Optional if you DON'T want sticky -->
+            </div>
+
         </div>
     </footer>
+
+    <div class="fixed-buttons">
+        <button class="footer-btn" onclick="openContactForm()">
+            <img src="img/logo/mail.png">
+        </button>
+
+        <button class="footer-btn" onclick="scrollToTop()">
+            <img src="img/logo/up.png">
+        </button>
+    </div>
 
     <script src="js/new-script.js"></script>
 </body>
