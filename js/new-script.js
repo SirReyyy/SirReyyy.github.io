@@ -438,23 +438,45 @@ function showFeatured(id) {
     const game = allGames[id];
     if (!game) return;
 
+    // Hero content
     const image = document.getElementById("featuredImage");
     const title = document.getElementById("featuredTitle");
     const description = document.getElementById("featuredDescription");
-    const logo = document.getElementById("featuredEngineLogo");
+    const engine = document.getElementById("featuredEngine");
 
     if (image) image.src = game.thumbnail;
     if (title) title.textContent = game.title;
     if (description) description.textContent = game.description;
-    if (logo) logo.src = getEngineLogo(id);
+    if (engine) engine.textContent = getEngine(id);
 
-    document.querySelectorAll(".featured-progress").forEach(bar => {
-        bar.style.width = "0%";
+    // Remove previous active state
+    document.querySelectorAll(".featured-item").forEach(item => {
+        item.classList.remove("active");
+
+        const progress = item.querySelector(".featured-progress");
+        if (progress) {
+            progress.style.transition = "none";
+            progress.style.width = "0%";
+        }
     });
 
+    // Activate current item
     const activeItem = document.querySelector(`[data-featured="${id}"]`);
-    if (activeItem) {
-        activeItem.classList.add("active");
+
+    if (!activeItem) return;
+
+    activeItem.classList.add("active");
+
+    // Restart progress animation
+    const progress = activeItem.querySelector(".featured-progress");
+
+    if (progress) {
+
+        // Force browser reflow so animation restarts
+        progress.offsetWidth;
+
+        progress.style.transition = "width 5s linear";
+        progress.style.width = "100%";
     }
 }
 
