@@ -29,8 +29,7 @@
                 <a href="#featured">Featured</a>
                 <a href="#portfolio">Projects</a>
                 <a href="assets/ReyMOronosJr-CV_2026.pdf" download>Resume</a>
-                <!-- <a href="#contact">Contact</a> -->
-                <a href="#" onclick="openContactForm(); return false;">Contact</a>
+                <a href="#contact">Contact</a>
             </nav>
         </div>
         <br><br>
@@ -112,6 +111,54 @@
         </div>
     </section>
 
+    <!-- Contact -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="contact-card">
+
+                <div class="contact-header">
+                    <h2>Let's Build Your Next Game</h2>
+                    <p>
+                        Interested in working together? Whether it's a freelance project,
+                        gameplay prototype, technical consultation, or a full-time opportunity,
+                        I'd be happy to hear from you.
+                    </p>
+                </div>
+
+                <form class="contact-form" action="https://formsubmit.co/rey.oronos.jr@gmail.com" method="POST">
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" name="Name" placeholder="Sir Reyyy" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="Email" placeholder="sirreyyy@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <input type="text" name="Subject" placeholder="Project / Opportunity" required>
+                    </div>
+
+                    <div class="form-group message">
+                        <label>Message</label>
+                        <textarea name="Message" placeholder="Tell me about your project..." required></textarea>
+                    </div>
+
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_subject" value="Portfolio Contact">
+
+                    <button class="send-btn">Send Message</button>
+
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <br><br>
     <footer class="footer">
@@ -135,9 +182,9 @@
     </footer>
 
     <div class="fixed-buttons">
-        <button class="footer-btn" onclick="openContactForm()">
+        <!-- <button class="footer-btn" onclick="openContactForm()">
             <img src="img/logo/mail.png">
-        </button>
+        </button> -->
 
         <button class="footer-btn" onclick="scrollToTop()">
             <img src="img/logo/up.png">
