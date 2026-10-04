@@ -361,6 +361,21 @@ z-index:999;
         0 0 12px rgba(255,255,255,.35);
 }
 
+.card.featured-target {
+    animation:featured-target-highlight 1.6s ease;
+}
+
+@keyframes featured-target-highlight {
+    0%, 100% {
+        box-shadow:none;
+    }
+    35%, 70% {
+        box-shadow:
+            0 0 0 2px #1f6fe0,
+            0 0 18px rgba(31,111,224,.65);
+    }
+}
+
 /* =========================
    IMAGE SECTION
 ========================= */
@@ -493,7 +508,8 @@ z-index:999;
     flex-shrink:0;
 }
 
-.engine-title h3{
+.engine-title h3,
+.section-title h3{
 
     margin:0;
 
@@ -504,6 +520,15 @@ z-index:999;
     font-weight:700;
 
     color:var(--text-primary);
+}
+
+.section-title{
+    margin-bottom:var(--engine-bottom-margin);
+}
+
+.contact-title{
+    max-width:1050px;
+    margin-inline:auto;
 }
 
 /* ===========================
@@ -611,18 +636,15 @@ z-index:999;
 .fixed-buttons .footer-btn{
     width:54px;
     height:54px;
-    border-radius:50%;
-    background:rgba(0,0,0,.35);
-    backdrop-filter:blur(8px);
-    border:1px solid var(--border-color);
+    border-radius:10px;
+    background:#222222;
+    border:none;
+    transition:background .2s ease;
 }
 
 .fixed-buttons .footer-btn:hover{
-    background:var(--text-primary);
-}
-
-.fixed-buttons .footer-btn:hover img{
-    filter:invert(1);
+    background:#1f6fe0;
+    transform:none;
 }
 
 
@@ -637,9 +659,9 @@ z-index:999;
 }
 
 .contact-card{
-    max-width:900px;
+    max-width:1000px;
     margin:0 auto;
-    padding:24px;
+    padding:25px;
     border:1px solid var(--border-color);
     border-radius:10px;
     background:rgba(255,255,255,.03);
@@ -708,7 +730,7 @@ z-index:999;
     width:100%;
     padding:10px 14px;
     background:transparent;
-    border:1px solid var(--border-color);
+    border:1px solid rgba(224,224,224,.18);
     border-radius:6px;
     color:var(--text-primary);
     font:inherit;
@@ -737,19 +759,19 @@ z-index:999;
 .send-btn{
     align-self:flex-end;
     margin-top:8px;
-    padding:10px 28px;
-    background:transparent;
-    color:var(--text-primary);
-    border:1px solid var(--border-color);
-    border-radius:6px;
+    padding:10px 16px;
+    background:#222222;
+    color:white;
+    border:none;
+    border-radius:10px;
     font-weight:600;
+    font-size:13px;
     cursor:pointer;
-    transition:background .2s ease,color .2s ease,border-color .2s ease;
+    transition:background .2s ease;
 }
 
 .send-btn:hover{
-    background:var(--text-primary);
-    color:var(--background-color);
+    background:#1f6fe0;
 }
 
 /* ==========================
