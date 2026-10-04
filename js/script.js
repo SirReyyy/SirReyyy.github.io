@@ -282,6 +282,77 @@ function extractMapCode(link) {
   return parts.pop();
 }
 
+function openImageLightbox(imageList, startIndex, gameTitle) {
+  document.querySelector(".image-lightbox")?.remove();
+
+  let currentIndex = startIndex;
+  const previousOverflow = document.body.style.overflow;
+
+  const overlay = document.createElement("div");
+  overlay.className = "image-lightbox";
+  overlay.setAttribute("role", "dialog");
+  overlay.setAttribute("aria-modal", "true");
+  overlay.setAttribute("aria-label", `${gameTitle} image viewer`);
+
+  const content = document.createElement("div");
+  content.className = "image-lightbox-content";
+
+  const image = document.createElement("img");
+  image.className = "image-lightbox-image";
+  image.alt = gameTitle;
+
+  const previousButton = document.createElement("button");
+  previousButton.type = "button";
+  previousButton.className = "image-lightbox-arrow previous";
+  previousButton.setAttribute("aria-label", "Previous image");
+  previousButton.textContent = "‹";
+
+  const nextButton = document.createElement("button");
+  nextButton.type = "button";
+  nextButton.className = "image-lightbox-arrow next";
+  nextButton.setAttribute("aria-label", "Next image");
+  nextButton.textContent = "›";
+
+  function updateLightboxImage() {
+    image.src = imageList[currentIndex];
+  }
+
+  function showPreviousImage() {
+    currentIndex = (currentIndex - 1 + imageList.length) % imageList.length;
+    updateLightboxImage();
+  }
+
+  function showNextImage() {
+    currentIndex = (currentIndex + 1) % imageList.length;
+    updateLightboxImage();
+  }
+
+  function closeLightbox() {
+    document.removeEventListener("keydown", handleLightboxKeydown);
+    document.body.style.overflow = previousOverflow;
+    overlay.remove();
+  }
+
+  function handleLightboxKeydown(event) {
+    if (event.key === "Escape") closeLightbox();
+    if (event.key === "ArrowLeft") showPreviousImage();
+    if (event.key === "ArrowRight") showNextImage();
+  }
+
+  previousButton.addEventListener("click", showPreviousImage);
+  nextButton.addEventListener("click", showNextImage);
+  overlay.addEventListener("click", event => {
+    if (!event.target.closest(".image-lightbox-content")) closeLightbox();
+  });
+  document.addEventListener("keydown", handleLightboxKeydown);
+
+  updateLightboxImage();
+  content.append(previousButton, image, nextButton);
+  overlay.appendChild(content);
+  document.body.appendChild(overlay);
+  document.body.style.overflow = "hidden";
+}
+
 // Card creation
 function createCard(game, gameId) {
   const card = document.createElement("div");
@@ -303,6 +374,9 @@ function createCard(game, gameId) {
   const img = document.createElement("img");
   img.src = imageList[0];
   img.alt = game.title;
+  img.addEventListener("click", () => {
+    openImageLightbox(imageList, currentIndex, game.title);
+  });
 
   media.appendChild(img);
 
@@ -356,7 +430,7 @@ function createCard(game, gameId) {
   playBtn.textContent = "Play";
 
   playBtn.addEventListener("click", () => {
-    achievementManager.unlock("game_launcher");
+    achievementManager.unlock("play");
   });
 
   info.appendChild(playBtn);
@@ -453,6 +527,7 @@ function getEngine(gameID){
 
 let featuredIndex = 0;
 let featuredTimer;
+let featuredProgressFrame;
 
 function showFeatured(id) {
 
@@ -473,12 +548,6 @@ function showFeatured(id) {
     // Remove previous active state
     document.querySelectorAll(".featured-item").forEach(item => {
         item.classList.remove("active");
-
-        const progress = item.querySelector(".featured-progress");
-        if (progress) {
-            progress.style.transition = "none";
-            progress.style.width = "0%";
-        }
     });
 
     // Activate current item
@@ -487,18 +556,6 @@ function showFeatured(id) {
     if (!activeItem) return;
 
     activeItem.classList.add("active");
-
-    // Restart progress animation
-    const progress = activeItem.querySelector(".featured-progress");
-
-    if (progress) {
-
-        // Force browser reflow so animation restarts
-        progress.offsetWidth;
-
-        progress.style.transition = "width 5s linear";
-        progress.style.width = "100%";
-    }
 }
 
 function scrollToGame(id) {
@@ -592,23 +649,28 @@ function createFeatured(){
 
 function restartFeaturedTimer(){
 
-    clearInterval(featuredTimer);
+    clearTimeout(featuredTimer);
+    cancelAnimationFrame(featuredProgressFrame);
+
+    document.querySelectorAll(".featured-progress").forEach(progress => {
+        progress.style.transition="none";
+        progress.style.width="0%";
+    });
 
     const activeBar=document.querySelector(".featured-item.active .featured-progress");
 
     if(activeBar){
+        // Force reflow before starting the only active progress animation.
+        void activeBar.offsetWidth;
 
-        activeBar.style.transition="none";
-        activeBar.style.width="0%";
-
-        requestAnimationFrame(()=>{
+        featuredProgressFrame=requestAnimationFrame(()=>{
+            if (!activeBar.closest(".featured-item").classList.contains("active")) return;
             activeBar.style.transition="width 6s linear";
             activeBar.style.width="100%";
         });
-
     }
 
-    featuredTimer=setInterval(()=>{
+    featuredTimer=setTimeout(()=>{
 
         featuredIndex++;
 

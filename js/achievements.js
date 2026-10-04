@@ -1,8 +1,13 @@
 const popup = document.getElementById("achievement-popup");
 
+// Set to true when achievements are ready to be enabled again.
+const ACHIEVEMENTS_ENABLED = false;
+
 const unlockedAchievements = new Set();
 
 function unlockAchievement(id) {
+
+    if (!ACHIEVEMENTS_ENABLED) return;
 
     if (unlockedAchievements.has(id)) return;
 
@@ -19,6 +24,10 @@ function unlockAchievement(id) {
         popup.classList.remove("show");
     }, 3000);
 }
+
+const achievementManager = {
+    unlock: unlockAchievement
+};
 
 
 //---- Achievements ----
