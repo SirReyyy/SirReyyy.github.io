@@ -20,7 +20,7 @@ const featuredGames = [
     "unity-multiplayer",
     "unity-tictac",
     "unity-pocket",
-    "uefn-hotel",
+    "gd-penguinrun",
     "uefn-elevator"
 ];
 
@@ -136,6 +136,18 @@ const unityGameData = {
 };
 
 const godotGameData = {
+  "gd-penguinrun": {
+    title: "Penguin Run",
+    tags: "2D | Arcade | Casual | Pixel Art",
+    thumbnail: "img/thumbnails/GD-PenguinRun.png",
+    description: "Penguin Run is an endless snowy dash inspired by Green Light, Red Light — hold to run on green, release to stop on red, and test your reflexes to beat your session high score without getting caught.",
+    screenshots: [
+      "img/screenshots/gd-penguinrun-1.png",
+      "img/screenshots/gd-penguinrun-2.png",
+      "img/screenshots/gd-penguinrun-3.png"
+    ],
+    link: "https://sirreyyy.itch.io/penguin-run"
+  },
   "gd-2dplatformer": {
     title: "GD 2D Platformer",
     tags: "2D | Arcade | Casual | Platformer",
@@ -518,7 +530,7 @@ function getEngine(gameID){
         return "Unreal Editor for Fortnite";
     if(gameID.startsWith("unity"))
         return "Unity";
-    if(gameID.startsWith("godot"))
+    if(gameID.startsWith("gd"))
         return "Godot";
     if(gameID.startsWith("ue"))
         return "Unreal Engine";
@@ -596,7 +608,7 @@ function getEngineLogo(id){
     if(id.startsWith("unity"))
         return "img/logo/logo-unity.png";
 
-    if(id.startsWith("godot"))
+    if(id.startsWith("gd"))
         return "img/logo/logo-godot.png";
 
     if(id.startsWith("ue"))
