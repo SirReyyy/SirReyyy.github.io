@@ -167,7 +167,7 @@ const unrealGameData = {
   "ue-tpdemo": {
     title: "3rd Person Demo",
     tags: "3D | Casual | First Person | Third Person",
-    thumbnail: "img/thumbnails/thumbnail.png",
+    thumbnail: "img/thumbnails/no-thumbnail-minimal.png",
     description: "Upward is a fast-paced competitive experience where players face off in 5 unique rounds, each testing different skills. Hone your mechanics in the Building Practice Arena, race upward in a vertical build challenge, survive the deadly rising lava, and unleash chaos in the elimination rounds. Every match is a new chance to dominate the arena!",
     screenshots: [
       "img/screenshots/ue-tpdemo-1.png",
