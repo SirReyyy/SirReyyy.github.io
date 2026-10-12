@@ -1,3 +1,4 @@
+﻿const FALLBACK_THUMBNAIL = 'img/thumbnails/no-thumbnail-minimal.png';
 // Always begin a fresh page view at the top instead of restoring the last scroll position.
 if ("scrollRestoration" in history) {
   history.scrollRestoration = "manual";
@@ -151,7 +152,7 @@ const godotGameData = {
   "gd-2dplatformer": {
     title: "GD 2D Platformer",
     tags: "2D | Arcade | Casual | Platformer",
-    thumbnail: "img/thumbnails/no_thumbnail.png",
+    thumbnail: "img/thumbnails/no-thumbnail-minimal.png",
     description: "GD 2D Platformer is a fun, fast-paced puzzle adventure featuring five unique worlds and fifty handcrafted stages! Jump, dash, and solve platforming challenges as you collect gems and coins scattered across each level. Unlock and play as five distinct characters, each bringing their own flair to the journey.",
     screenshots: [
       "img/screenshots/gd-2dplatformer-1.png",
@@ -359,7 +360,12 @@ function openImageLightbox(imageList, startIndex, gameTitle) {
   document.addEventListener("keydown", handleLightboxKeydown);
 
   updateLightboxImage();
-  content.append(previousButton, image, nextButton);
+  const closeButton = document.createElement("button");
+  closeButton.type = "button";
+  closeButton.className = "image-lightbox-close";
+  closeButton.textContent = "Close ×";
+  closeButton.addEventListener("click", closeLightbox);
+  content.append(previousButton, image, nextButton, closeButton);
   overlay.appendChild(content);
   document.body.appendChild(overlay);
   document.body.style.overflow = "hidden";
@@ -378,14 +384,15 @@ function createCard(game, gameId) {
   media.className = "card-media";
 
   const imageList = game.screenshots?.length
-    ? [game.thumbnail, ...game.screenshots]
-    : [game.thumbnail];
+    ? [game.thumbnail || FALLBACK_THUMBNAIL, ...game.screenshots]
+    : [game.thumbnail || FALLBACK_THUMBNAIL];
 
   let currentIndex = 0;
 
   const img = document.createElement("img");
   img.src = imageList[0];
   img.alt = game.title;
+  img.loading = "lazy";
   img.addEventListener("click", () => {
     openImageLightbox(imageList, currentIndex, game.title);
   });
@@ -395,11 +402,13 @@ function createCard(game, gameId) {
   // LEFT ARROW
   const left = document.createElement("button");
   left.className = "media-arrow left";
+  left.setAttribute("aria-label", "Previous screenshot");
   left.innerHTML = "‹";
 
   // RIGHT ARROW
   const right = document.createElement("button");
   right.className = "media-arrow right";
+  right.setAttribute("aria-label", "Next screenshot");
   right.innerHTML = "›";
 
   function updateImage() {
@@ -503,21 +512,6 @@ function scrollToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function openContactForm() {
-  document.getElementById('contactModal').classList.add('active');
-}
-
-function closeContactForm() {
-  document.getElementById('popupContactForm').reset();
-  document.getElementById('contactModal').classList.remove('active');
-}
-
-document.addEventListener('keydown', function(e) {
-  if (e.key === "Escape") closeContactForm();
-});
-
-
-
 const allGames = {
     ...uefnGameData,
     ...unityGameData,
@@ -540,6 +534,7 @@ function getEngine(gameID){
 let featuredIndex = 0;
 let featuredTimer;
 let featuredProgressFrame;
+let featuredPaused = false;
 
 function showFeatured(id) {
 
@@ -552,7 +547,7 @@ function showFeatured(id) {
     const description = document.getElementById("featuredDescription");
     const engine = document.getElementById("featuredEngine");
 
-    if (image) image.src = game.thumbnail;
+    if (image) { image.src = game.thumbnail || FALLBACK_THUMBNAIL; image.alt = game.title; }
     if (title) title.textContent = game.title;
     if (description) description.textContent = game.description;
     if (engine) engine.textContent = getEngine(id);
@@ -560,6 +555,7 @@ function showFeatured(id) {
     // Remove previous active state
     document.querySelectorAll(".featured-item").forEach(item => {
         item.classList.remove("active");
+        item.setAttribute("aria-pressed", "false");
     });
 
     // Activate current item
@@ -568,51 +564,28 @@ function showFeatured(id) {
     if (!activeItem) return;
 
     activeItem.classList.add("active");
+    activeItem.setAttribute("aria-pressed", "true");
 }
 
 function scrollToGame(id) {
     const card = document.getElementById(`game-${id}`);
     if (!card) return;
-
-    card.classList.remove("featured-target");
-
-    let scrollEndTimer;
-
-    const highlightCard = () => {
-        window.removeEventListener("scroll", waitForScrollEnd);
-        window.clearTimeout(scrollEndTimer);
-
-        void card.offsetWidth;
-        card.classList.add("featured-target");
-
-        window.setTimeout(() => {
-            card.classList.remove("featured-target");
-        }, 1600);
-    };
-
-    const waitForScrollEnd = () => {
-        window.clearTimeout(scrollEndTimer);
-        scrollEndTimer = window.setTimeout(highlightCard, 120);
-    };
-
-    window.addEventListener("scroll", waitForScrollEnd, { passive: true });
-    scrollEndTimer = window.setTimeout(highlightCard, 100);
-    card.scrollIntoView({ behavior: "smooth", block: "center" });
+    const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+    card.scrollIntoView({ behavior, block: "center" });
 }
-
 function getEngineLogo(id){
 
     if(id.startsWith("uefn"))
-        return "img/logo/logo-uefn.png";
+        return "img/logo/uefn.png";
 
     if(id.startsWith("unity"))
-        return "img/logo/logo-unity.png";
+        return "img/logo/unity.png";
 
     if(id.startsWith("gd"))
-        return "img/logo/logo-godot.png";
+        return "img/logo/godot.png";
 
     if(id.startsWith("ue"))
-        return "img/logo/logo-ue.png";
+        return "img/logo/ue.png";
 
 }
 
@@ -625,13 +598,14 @@ function createFeatured(){
 
         const game = allGames[id];
 
-        const item = document.createElement("div");
+        const item = document.createElement("button");
+        item.type = "button";
 
         item.className = "featured-item";
         item.dataset.featured = id;
 
         item.innerHTML = `
-            <img src="${game.thumbnail}">
+            <img src="${game.thumbnail || FALLBACK_THUMBNAIL}" alt="">
             <div class="featured-item-info">
                 <h4>${game.title}</h4>
                 <p>${getEngine(id)}</p>
@@ -649,7 +623,7 @@ function createFeatured(){
             featuredIndex=index;
             showFeatured(id);
             restartFeaturedTimer();
-            scrollToGame(id);
+
         });
 
         list.appendChild(item);
@@ -663,6 +637,7 @@ function restartFeaturedTimer(){
 
     clearTimeout(featuredTimer);
     cancelAnimationFrame(featuredProgressFrame);
+    if (featuredPaused) return;
 
     document.querySelectorAll(".featured-progress").forEach(progress => {
         progress.style.transition="none";
@@ -701,38 +676,6 @@ createFeatured();
 
 
 
-/* ============================
-   Contact Modal
-============================ */
-
-function openContactForm() {
-    const modal = document.getElementById("contactModal");
-    modal.classList.add("show");
-    document.body.style.overflow = "hidden";
-}
-
-function closeContactForm() {
-    const modal = document.getElementById("contactModal");
-    modal.classList.remove("show");
-    document.body.style.overflow = "";
-}
-
-// Close when clicking outside
-window.addEventListener("click", function(e) {
-    const modal = document.getElementById("contactModal");
-
-    if (e.target === modal) {
-        closeContactForm();
-    }
-});
-
-// ESC key closes modal
-document.addEventListener("keydown", function(e) {
-    if (e.key === "Escape") {
-        closeContactForm();
-    }
-});
-
 //---- Achievements ----
 
 // Welcome
@@ -745,3 +688,44 @@ window.addEventListener("load",()=>{
       );
     },800);
 });
+
+// Responsive navigation and featured controls.
+const navToggle = document.querySelector(".nav-toggle");
+const siteNav = document.getElementById("siteNav");
+navToggle.addEventListener("click", () => {
+  const expanded = navToggle.getAttribute("aria-expanded") !== "true";
+  navToggle.setAttribute("aria-expanded", String(expanded));
+  siteNav.classList.toggle("open", expanded);
+});
+siteNav.addEventListener("click", event => {
+  if (event.target.closest("a")) {
+    siteNav.classList.remove("open");
+    navToggle.setAttribute("aria-expanded", "false");
+  }
+});
+document.getElementById("featuredExplore").addEventListener("click", () => scrollToGame(featuredGames[featuredIndex]));
+const pauseButton = document.getElementById("featuredPause");
+function updateFeaturedPause() {
+  pauseButton.textContent = featuredPaused ? "Resume rotation" : "Pause rotation";
+  pauseButton.setAttribute("aria-pressed", String(featuredPaused));
+  restartFeaturedTimer();
+}
+pauseButton.addEventListener("click", () => {
+  featuredPaused = !featuredPaused;
+  updateFeaturedPause();
+});
+if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  featuredPaused = true;
+  updateFeaturedPause();
+}
+
+
+
+// Use the portfolio placeholder if a game image is unavailable.
+document.addEventListener("error", event => {
+  const image = event.target;
+  if (!(image instanceof HTMLImageElement)) return;
+  if (!image.matches(".card-media img, .featured-image, .featured-item img, .image-lightbox-image")) return;
+  if (image.getAttribute("src") !== FALLBACK_THUMBNAIL) image.src = FALLBACK_THUMBNAIL;
+}, true);
+
