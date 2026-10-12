@@ -28,7 +28,14 @@
 <section id="featured" class="section featured-section"><div class="container">
 <div class="intro"><div><p class="eyebrow">Game developer / Creative explorer</p><h1>Small ideas.<br><span>Big play.</span></h1></div><div class="intro-copy"><p>I’m Rey. I build games and interactive experiences across Unity, Godot, Unreal Engine, and Fortnite.</p><a class="text-link" href="#portfolio">Explore my games <span aria-hidden="true">↘</span></a></div></div>
 <div class="featured-wrapper"><div class="section-title"><h2>In the spotlight</h2><span>Selected projects / 01—05</span></div>
-<div class="featured-layout"><div class="featured-hero"><img id="featuredImage" class="featured-image" alt=""><div class="featured-overlay"><div><p id="featuredEngine" class="eyebrow"></p><h2 id="featuredTitle"></h2></div><button id="featuredExplore" class="hero-link" type="button">Explore game ↗</button></div></div><div id="featuredList" class="featured-list" aria-label="Featured games"></div></div>
+<div class="featured-layout" role="region" aria-roledescription="carousel" aria-label="Featured games"><div class="featured-hero"><img id="featuredImage" class="featured-image" alt=""><div class="featured-overlay"><div><p id="featuredEngine" class="eyebrow"></p><h2 id="featuredTitle"></h2></div><button id="featuredExplore" class="hero-link" type="button">Explore game ↗</button></div></div><div id="featuredList" class="featured-list" aria-label="Featured games"></div></div>
+<div class="mobile-carousel-controls" aria-label="Featured carousel controls">
+    <button id="featuredPrevious" type="button" aria-label="Previous featured game">←</button>
+    <div id="featuredDots" class="featured-dots" aria-label="Choose a featured game"></div>
+    <span id="featuredCounter" class="featured-counter">1 / 5</span>
+    <button id="featuredNext" type="button" aria-label="Next featured game">→</button>
+</div>
+<div id="featuredAnnouncement" class="sr-only" aria-live="polite" aria-atomic="true"></div>
 <div class="featured-controls"><span>Discover something worth playing.</span><button id="featuredPause" type="button" aria-pressed="false">Pause rotation</button></div></div>
 </div></section>
 <section id="portfolio" class="section portfolio-section"><div class="container"><div class="portfolio-heading"><p class="eyebrow">Made to be played</p><h2>My Games<span>.</span></h2><p>A collection of experiments, worlds, and playable ideas.</p></div>
@@ -65,5 +72,6 @@
 <div id="achievement-popup"><div class="achievement-icon">🏆</div><div class="achievement-text"><div class="achievement-title">Achievement Unlocked</div><div class="achievement-name"></div><div class="achievement-desc"></div></div></div>
 <script src="js/script.js"></script><script src="js/achievements.js"></script>
 </body></html>
+
 
 

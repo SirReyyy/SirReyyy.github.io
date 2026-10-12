@@ -552,6 +552,12 @@ function showFeatured(id) {
     if (description) description.textContent = game.description;
     if (engine) engine.textContent = getEngine(id);
 
+    const currentIndex = featuredGames.indexOf(id);
+    document.getElementById("featuredCounter").textContent = `${currentIndex + 1} / ${featuredGames.length}`;
+    document.querySelectorAll(".featured-dot").forEach((dot, index) => {
+        dot.setAttribute("aria-pressed", String(index === currentIndex));
+    });
+
     // Remove previous active state
     document.querySelectorAll(".featured-item").forEach(item => {
         item.classList.remove("active");
@@ -637,7 +643,7 @@ function restartFeaturedTimer(){
 
     clearTimeout(featuredTimer);
     cancelAnimationFrame(featuredProgressFrame);
-    if (featuredPaused) return;
+    if (featuredPaused || document.hidden || document.querySelector(".featured-wrapper").contains(document.activeElement)) return;
 
     document.querySelectorAll(".featured-progress").forEach(progress => {
         progress.style.transition="none";
@@ -729,3 +735,61 @@ document.addEventListener("error", event => {
   if (image.getAttribute("src") !== FALLBACK_THUMBNAIL) image.src = FALLBACK_THUMBNAIL;
 }, true);
 
+
+// Mobile carousel: buttons, direct selection, and horizontal touch swipes.
+function selectFeatured(index) {
+  featuredIndex = (index + featuredGames.length) % featuredGames.length;
+  showFeatured(featuredGames[featuredIndex]);
+  document.getElementById("featuredAnnouncement").textContent = `${allGames[featuredGames[featuredIndex]].title}, game ${featuredIndex + 1} of ${featuredGames.length}`;
+  restartFeaturedTimer();
+}
+const featuredDots = document.getElementById("featuredDots");
+featuredGames.forEach((id, index) => {
+  const dot = document.createElement("button");
+  dot.type = "button";
+  dot.className = "featured-dot";
+  dot.setAttribute("aria-label", `Show ${allGames[id].title}`);
+  dot.setAttribute("aria-pressed", String(index === featuredIndex));
+  dot.addEventListener("click", () => selectFeatured(index));
+  featuredDots.appendChild(dot);
+});
+document.getElementById("featuredPrevious").addEventListener("click", () => selectFeatured(featuredIndex - 1));
+document.getElementById("featuredNext").addEventListener("click", () => selectFeatured(featuredIndex + 1));
+const featuredHero = document.querySelector(".featured-hero");
+let swipeStart;
+featuredHero.addEventListener("pointerdown", event => {
+  if (event.pointerType === "touch" && !event.target.closest("button, a")) {
+    swipeStart = { x: event.clientX, y: event.clientY };
+  }
+});
+featuredHero.addEventListener("pointerup", event => {
+  if (!swipeStart) return;
+  const dx = event.clientX - swipeStart.x;
+  const dy = event.clientY - swipeStart.y;
+  swipeStart = null;
+  if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+    selectFeatured(featuredIndex + (dx < 0 ? 1 : -1));
+  }
+});
+featuredHero.addEventListener("pointercancel", () => { swipeStart = null; });
+const featuredWrapper = document.querySelector(".featured-wrapper");
+featuredWrapper.addEventListener("focusin", () => {
+  clearTimeout(featuredTimer);
+  cancelAnimationFrame(featuredProgressFrame);
+});
+featuredWrapper.addEventListener("focusout", () => window.setTimeout(restartFeaturedTimer, 0));
+document.addEventListener("visibilitychange", restartFeaturedTimer);
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape" && siteNav.classList.contains("open")) {
+    siteNav.classList.remove("open");
+    navToggle.setAttribute("aria-expanded", "false");
+    navToggle.focus();
+  }
+});
+
+// Discard the mobile menu state when crossing between mobile and desktop.
+const mobileNavigationQuery = window.matchMedia("(max-width: 760px)");
+mobileNavigationQuery.addEventListener("change", () => {
+  siteNav.classList.remove("open");
+  navToggle.setAttribute("aria-expanded", "false");
+});
