@@ -224,3 +224,110 @@ html, body {
 /* Crossfade gallery images while keeping navigation controls above them. */
 .gallery-image-outgoing { pointer-events: none; z-index: 1; }
 .media-arrow, .image-lightbox-arrow, .image-lightbox-close { z-index: 2; }
+
+/* Sol keeps the original palette; Luna colors only the site shell. */
+:root {
+    --shell-bg: #f6f3ed;
+    --shell-text: #202027;
+    --shell-muted: #69696e;
+    --shell-accent: #e85134;
+    --shell-border: #20202735;
+    --shell-header: #f6f3edf5;
+    --shell-footer: #202027;
+    --shell-credits: #2b2b33;
+    --shell-footer-hover: #f78169;
+}
+html[data-theme="luna"] {
+    --shell-bg: #0e1b30;
+    --shell-text: #e6edf9;
+    --shell-muted: #a4b6d0;
+    --shell-accent: #91baff;
+    --shell-border: #a4b6d040;
+    --shell-header: #101f35f5;
+    --shell-footer: #0b1628;
+    --shell-credits: #101e33;
+    --shell-footer-hover: #91baff;
+}
+body { background: var(--shell-bg); color: var(--shell-text); }
+.site-header { background: var(--shell-header); border-bottom-color: var(--shell-border); }
+.header-tools { display: flex; align-items: center; gap: 12px; margin-left: auto; }
+.theme-toggle { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 8px 12px; border: 1px solid var(--shell-border); border-radius: 24px; color: var(--shell-text); background: transparent; font-size: 12px; font-weight: 700; }
+#themeSymbol { font-size: 20px; line-height: 1; }
+.theme-toggle:hover { background: var(--shell-text); color: var(--shell-bg); }
+.site-nav a:hover, .header-socials a:hover, .brand-dot, .intro h1 span, .text-link:hover { color: var(--shell-accent); }
+.header-socials { border-left-color: var(--shell-border); }
+.nav-toggle { color: var(--shell-text); border-color: var(--shell-border); }
+.text-link, .featured-heading { border-color: var(--shell-text); }
+.featured-heading > span, .featured-controls, .featured-controls button { color: var(--shell-muted); }
+.featured-heading .engine-logo { filter: brightness(0); }
+html[data-theme="luna"] .featured-heading .engine-logo { filter: brightness(0) invert(1); }
+.featured-dot::after { background: var(--shell-border); }
+.featured-dot[aria-pressed="true"]::after, .featured-dot:hover::after { background: var(--shell-accent); }
+.featured-hero { box-shadow: 0 12px 30px #0003; }
+.footer { background: var(--shell-footer); }
+.footer-credits { background: var(--shell-credits); }
+.footer a:hover, .footer-socials a:hover { color: var(--shell-footer-hover); }
+/* Original Sol gallery palette; Luna overrides below. */
+.portfolio-section { --bg: #f6f3ed; --text: #202027; --muted: #69696e; --accent: #e85134; color: #202027; background: #fff; }
+@media (min-width: 1101px) {
+    .header-content { gap: 20px; }
+    .site-nav { gap: 22px; }
+    .header-links { gap: 22px; }
+}
+@media (min-width: 761px) and (max-width: 1100px) {
+    .header-tools { margin-left: 0; }
+}
+@media (max-width: 760px) {
+    .header-tools { gap: 8px; }
+    .theme-toggle { padding-inline: 10px; }
+    .spotlight-carousel-controls > button { color: var(--shell-text); border-color: var(--shell-border); }
+}
+
+/* Theme gallery surfaces and UI; game artwork and Project Z assets stay unchanged. */
+html[data-theme="luna"] .portfolio-section {
+    --bg: #122139;
+    --text: #e6edf9;
+    --muted: #a4b6d0;
+    --accent: #91baff;
+    color: var(--text);
+    background: var(--bg);
+}
+html[data-theme="luna"] .portfolio-heading > p:last-child,
+html[data-theme="luna"] .engine-title > span,
+html[data-theme="luna"] .description { color: var(--muted); }
+html[data-theme="luna"] .card { border-bottom-color: #a4b6d040; }
+html[data-theme="luna"] .card-media { background: #1c304c; }
+html[data-theme="luna"] .portfolio-section .engine-logo { filter: brightness(0) invert(1); }
+html[data-theme="luna"] .play-btn { color: #0e1b30; }
+html[data-theme="luna"] .play-btn:hover { background: #c1d6ff; }
+html[data-theme="luna"] .media-arrow:hover { background: #91baff; color: #0e1b30; }
+
+
+/* Equal label contrast across spotlight and gallery headings. */
+html[data-theme="luna"] .engine-title > span { color: #a4b6d0; }
+html[data-theme="sol"] .engine-title > span { color: #69696e; }
+/* Strong, explicit foreground/background pairs for hover and keyboard focus. */
+html[data-theme="luna"] .play-btn:is(:hover, :focus-visible) { background: #e6edf9; color: #0e1b30; box-shadow: 0 0 0 2px #91baff; }
+html[data-theme="sol"] .play-btn:is(:hover, :focus-visible) { background: #202027; color: #fff; }
+html[data-theme="luna"] :is(.media-arrow, .image-lightbox-arrow, .image-lightbox-close):is(:hover, :focus-visible) { background: #e6edf9; color: #0e1b30; }
+.featured-controls button:is(:hover, :focus-visible),
+.nav-toggle:is(:hover, :focus-visible) { background: var(--shell-text); color: var(--shell-bg); }
+.theme-toggle:is(:hover, :focus-visible) { background: var(--shell-text); color: var(--shell-bg); }
+html[data-theme="luna"] .featured-dot:hover::after { background: #e6edf9; transform: translate(-50%, -50%) scale(1.5); }
+html[data-theme="luna"] .spotlight-carousel-controls > button:is(:hover, :focus-visible) { background: #e6edf9; color: #0e1b30; }
+
+/* Theme switch follows the social icons in the header navigation. */
+@media (min-width: 761px) {
+    .header-tools { display: none; }
+    .site-nav { margin-left: auto; }
+}
+.header-socials { flex-wrap: wrap; }
+.header-socials .theme-toggle { flex-shrink: 0; }
+
+/* Keep the theme switch dimensions identical for both labels. */
+.header-socials .theme-toggle {
+    width: 92px;
+    height: 44px;
+    flex: 0 0 92px;
+    padding: 8px;
+}

@@ -1,4 +1,4 @@
-const FALLBACK_THUMBNAIL = 'img/thumbnails/no-thumbnail-minimal.png';
+﻿const FALLBACK_THUMBNAIL = 'img/thumbnails/no-thumbnail-minimal.png';
 // Always begin a fresh page view at the top instead of restoring the last scroll position.
 if ("scrollRestoration" in history) {
   history.scrollRestoration = "manual";
@@ -18,12 +18,12 @@ function resetPagePosition() {
 window.addEventListener("pageshow", resetPagePosition);
 
 const featuredGames = [
+    "gd-2dplatformer",
     "unity-multiplayer",
     "unity-tictac",
     "unity-pocket",
     "gd-penguinrun",
     "uefn-elevator",
-    "ph-fortune",
     "unity-bounceandspin",
     "uefn-hotel"
 ];
@@ -153,16 +153,16 @@ const godotGameData = {
     link: "https://sirreyyy.itch.io/penguin-run"
   },
   "gd-2dplatformer": {
-    title: "GD 2D Platformer",
+    title: "Gembound 2D Platformer",
     tags: "2D | Arcade | Casual | Platformer",
-    thumbnail: "img/thumbnails/no-thumbnail-minimal.png",
-    description: "GD 2D Platformer is a fun, fast-paced puzzle adventure featuring five unique worlds and fifty handcrafted stages! Jump, dash, and solve platforming challenges as you collect gems and coins scattered across each level. Unlock and play as five distinct characters, each bringing their own flair to the journey.",
+    thumbnail: "img/thumbnails/GD-Gembound.png",
+    description: "Gembound 2D Platformer is a fun, fast-paced puzzle adventure featuring five unique worlds and fifty handcrafted stages! Jump, dash, and solve platforming challenges as you collect gems and coins scattered across each level. Unlock and play as five distinct characters, each bringing their own flair to the journey.",
     screenshots: [
       "img/screenshots/gd/gd-2dplatformer-1.png",
       "img/screenshots/gd/gd-2dplatformer-2.png",
       "img/screenshots/gd/gd-2dplatformer-3.png"
     ],
-    link: "https://sirreyyy.itch.io/gd-2d-platformer"
+    link: "https://sirreyyy.itch.io/gd-gembound"
   }
 };
 
@@ -364,6 +364,7 @@ function extractMapCode(link) {
 
 const galleryImageTransitions = new WeakMap();
 function crossfadeGalleryImage(image, source) {
+  source = themedThumbnail(source);
   const previous = galleryImageTransitions.get(image);
   previous?.outgoing?.remove();
   const state = {};
@@ -496,7 +497,7 @@ function createCard(game, gameId) {
   let currentIndex = 0;
 
   const img = document.createElement("img");
-  img.src = imageList[0];
+  img.src = themedThumbnail(imageList[0]);
   img.alt = game.title;
   img.loading = "lazy";
   img.addEventListener("click", () => {
@@ -649,7 +650,7 @@ let featuredPaused = false;
 let featuredImageVersion = 0;
 function updateFeaturedImage(image, game) {
     const version = ++featuredImageVersion;
-    const source = game.thumbnail || FALLBACK_THUMBNAIL;
+    const source = themedThumbnail(game.thumbnail || FALLBACK_THUMBNAIL);
     const previous = image.parentElement.querySelector('.featured-image-outgoing');
     previous?.remove();
 
@@ -672,7 +673,7 @@ function updateFeaturedImage(image, game) {
         image.decode().catch(() => {}).then(() => {
             if (version !== featuredImageVersion) { outgoing.remove(); return; }
             const fade = outgoing.animate([{ opacity: 1 }, { opacity: 0 }], {
-                duration: 600, easing: 'ease-in-out', fill: 'forwards'
+                duration: 300, easing: 'ease-in-out', fill: 'forwards'
             });
             fade.finished.catch(() => {}).finally(() => outgoing.remove());
         });
@@ -784,7 +785,6 @@ siteNav.addEventListener("click", event => {
     navToggle.setAttribute("aria-expanded", "false");
   }
 });
-document.getElementById("featuredExplore").addEventListener("click", () => scrollToGame(featuredGames[featuredIndex]));
 const pauseButton = document.getElementById("featuredPause");
 function updateFeaturedPause() {
   pauseButton.textContent = featuredPaused ? "Resume rotation" : "Pause rotation";
@@ -807,7 +807,8 @@ document.addEventListener("error", event => {
   const image = event.target;
   if (!(image instanceof HTMLImageElement)) return;
   if (!image.matches(".card-media img, .featured-image, .featured-item img, .image-lightbox-image")) return;
-  if (image.getAttribute("src") !== FALLBACK_THUMBNAIL) image.src = FALLBACK_THUMBNAIL;
+  const fallback = themedThumbnail(FALLBACK_THUMBNAIL);
+  if (image.getAttribute("src") !== fallback) image.src = fallback;
 }, true);
 
 
@@ -848,6 +849,7 @@ featuredHero.addEventListener("pointerup", event => {
 });
 featuredHero.addEventListener("pointercancel", () => { swipeStart = null; });
 document.addEventListener("visibilitychange", restartFeaturedTimer);
+document.addEventListener("visibilitychange", restartFeaturedTimer);
 document.addEventListener("keydown", event => {
   if (event.key === "Escape" && siteNav.classList.contains("open")) {
     siteNav.classList.remove("open");
@@ -862,3 +864,34 @@ mobileNavigationQuery.addEventListener("change", () => {
   siteNav.classList.remove("open");
   navToggle.setAttribute("aria-expanded", "false");
 });
+
+
+
+// Persist a manual theme choice without changing gallery or logo assets.
+const themeToggle = document.getElementById("themeToggle");
+function applyTheme(theme) {
+  const selected = theme === "sol" ? "sol" : "luna";
+  document.documentElement.dataset.theme = selected;
+  document.querySelector(".brand-logo").src = selected === "luna" ? "img/SirReyyy-luna.png" : "img/SirReyyy-light.png";
+  document.querySelectorAll("img").forEach(image => {
+    const source = image.getAttribute("src");
+    if (source === FALLBACK_THUMBNAIL || source === "img/thumbnails/no-thumbnail-luna.png") {
+      image.src = themedThumbnail(source);
+    }
+  });
+  document.getElementById("themeName").textContent = selected === "sol" ? "Sol" : "Luna";
+  document.getElementById("themeSymbol").textContent = selected === "sol" ? "☀" : "☾";
+  themeToggle.setAttribute("aria-label", `Switch to ${selected === "sol" ? "Luna" : "Sol"} theme`);
+  themeToggle.setAttribute("title", `Current theme: ${selected === "sol" ? "Sol" : "Luna"}`);
+}
+applyTheme(document.documentElement.dataset.theme);
+themeToggle.addEventListener("click", () => {
+  const theme = document.documentElement.dataset.theme === "luna" ? "sol" : "luna";
+  applyTheme(theme);
+  try { localStorage.setItem("project-z-theme", theme); } catch (_) { /* Storage may be disabled. */ }
+});
+
+function themedThumbnail(source) {
+  if (source !== FALLBACK_THUMBNAIL && source !== "img/thumbnails/no-thumbnail-luna.png") return source;
+  return document.documentElement.dataset.theme === "luna" ? "img/thumbnails/no-thumbnail-luna.png" : FALLBACK_THUMBNAIL;
+}
